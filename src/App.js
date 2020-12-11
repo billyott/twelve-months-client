@@ -2,6 +2,7 @@
 
 import LoginContainer from './containers/login-container'
 import Header from './components/header'
+import NavBar from './components/nav-bar'
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                 </Switch>
             </BrowserRouter> */}
             <Header />
+            <NavBar />
             <LoginContainer />
         </div>
     );

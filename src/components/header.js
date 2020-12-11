@@ -7,8 +7,9 @@ function Header() {
 
 
     return (
-        <div>
-            <h1>12MONTHS</h1>
+        <div className="header">
+            <h1 className="header__title">12MONTHS</h1>
+            <p className="header__link">log out</p>
         </div>
     );
 
