@@ -1,12 +1,15 @@
 import React from 'react';
 
+import MoodRatingWidget from './mood-rating-widget';
+import SleepWidget from './sleep-widget';
+import NewNoteForm from './new-note-form';
 import './day-details-card.scss';
 
 
 class DayDetailsCard extends React.Component {
 
     state = {
-        showAddNoteForm: false
+        showAddNoteForm: true
     }
 
     render(){
@@ -20,7 +23,7 @@ class DayDetailsCard extends React.Component {
                         <li>PLACEHOLDER NOTE</li>
                         <li>PLACEHOLDER NOTE</li>
                     </ul>
-                    {this.state.showAddNoteForm ? <>PLACEHOLDER FOR ADD NOTE FORM</> : null}
+                    {this.state.showAddNoteForm ? <NewNoteForm /> : null}
                     <button className="day-details-card__button">+ add note</button>
                 </div>
                 <div className="day-details-card__right-container">
@@ -36,8 +39,8 @@ class DayDetailsCard extends React.Component {
                     </div>
                     <div className="day-details-card__mood-sleep">
                         <div className="day-details-card__header day-details-card--mood-sleep">mood + sleep</div>
-                        <>PLACEHOLDER FOR MOOD RATING COMPONENT</>
-                        <>PLACEHOLDER FOR HOURS SLEEP COMPONENT</>
+                        <MoodRatingWidget />
+                        <SleepWidget />
                     </div>
                 </div>
             </div>

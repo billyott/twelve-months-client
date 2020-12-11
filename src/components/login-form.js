@@ -18,13 +18,13 @@ class LoginForm extends React.Component {
 
     render(){
         return(
-            <div className="login-form">
+            <form className="login-form">
                 <h1 className="login-form__header">LOG IN</h1>
                 <label className="login-form__label">username</label>
                 <input className="login-form__input" name="username" placeholder="enter username" value={this.state.username} onChange={this.handleInputUpdate}></input>
                 <label className="login-form__label">password</label>
                 <input className="login-form__input" name="password" placeholder="enter password" value={this.state.password} onChange={this.handleInputUpdate} type="password"></input>
-            </div>
+            </form>
         );
     }
 
