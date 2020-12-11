@@ -6,6 +6,7 @@ import NavBar from './components/nav-bar';
 import HomepageContainer from './containers/homepage-container';
 import DayDetailsContainer from './containers/day-details-container';
 import AllDaysContainer from './containers/all-days-container';
+import ManageHabitsContainer from './containers/manage-habits-container';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <HomepageContainer />
             <DayDetailsContainer />
             <AllDaysContainer />
+            <ManageHabitsContainer />
         </div>
     );
 }

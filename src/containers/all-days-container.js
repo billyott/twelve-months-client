@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DayCard from '../components/day-card'
+import DayCard from '../components/day-card';
 import './all-days-container.scss';
 
 
@@ -9,7 +9,7 @@ class AllDaysContainer extends React.Component{
     state = {
         month: '',
         year: ''
-    }
+    };
 
     handleInputUpdate = (e) => {
         this.setState({
