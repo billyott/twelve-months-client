@@ -26,8 +26,8 @@ class LoginForm extends React.Component {
                 <input className="login-form__input" name="password" placeholder="enter password" value={this.state.password} onChange={this.handleInputUpdate} type="password"></input>
             </div>
         );
-    };
+    }
 
-};
+}
 
 export default LoginForm;

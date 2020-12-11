@@ -29,8 +29,8 @@ class NewUserForm extends React.Component {
                 <input className="new-user-form__input" name="password" placeholder="enter password" value={this.state.password} onChange={this.handleInputUpdate} type="password"></input>
             </div>
         );
-    };
+    }
 
-};
+}
 
 export default NewUserForm;
