@@ -9,7 +9,7 @@ function Header() {
     return (
         <div className="header">
             <h1 className="header__title">12MONTHS</h1>
-            <p className="header__link">log out</p>
+            <a className="header__link" href="/">log out</a>
         </div>
     );
 

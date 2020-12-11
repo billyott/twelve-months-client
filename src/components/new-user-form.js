@@ -20,7 +20,10 @@ class NewUserForm extends React.Component {
     render(){
         return(
             <div className="new-user-form">
-                <h1 className="new-user-form__title">SIGN IN</h1>
+                <div classname="new-user-form__text">
+                    ...or if you're new here...
+                </div>
+                <h1 className="new-user-form__header">SIGN IN</h1>
                 <label className="new-user-form__label">email</label>
                 <input className="new-user-form__input" name="email" placeholder="enter email" value={this.state.email} onChange={this.handleInputUpdate}></input>
                 <label className="new-user-form__label">username</label>

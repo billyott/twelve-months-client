@@ -9,15 +9,17 @@ function HomepageContainer() {
     return (
         <div className="homepage-container">
             <div className="homepage-container__top">
-                <p className="homepage-container__p">Today</p>
+                <div className="homepage-container__header">Today</div>
                 <DayDetailsCard />
             </div>
             <div className="homepage-container__bottom">
-                <p className="homepage-container__p">Past Three Days</p>
-                <div className="homepage-container__day-card-div">
-                    {/* past three days' day cards here */}
-                </div>
+                <div className="homepage-container__header">Past Three Days</div>
                 <a className="homepage-container__link" href="/">see all days</a>
+                <ul className="homepage-container__day-cards-list">
+                    <li>PLACEHOLDER DAY CARD</li>
+                    <li>PLACEHOLDER DAY CARD</li>
+                    <li>PLACEHOLDER DAY CARD</li>
+                </ul>
             </div>
         </div>
     );
