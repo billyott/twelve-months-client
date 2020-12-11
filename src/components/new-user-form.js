@@ -20,7 +20,7 @@ class NewUserForm extends React.Component {
     render(){
         return(
             <form className="new-user-form">
-                <div classname="new-user-form__text">
+                <div className="new-user-form__text">
                     ...or if you're new here...
                 </div>
                 <div className="new-user-form__header">SIGN IN</div>

@@ -1,9 +1,11 @@
 // import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
-import LoginContainer from './containers/login-container'
-import Header from './components/header'
-import NavBar from './components/nav-bar'
+import LoginContainer from './containers/login-container';
+import Header from './components/header';
+import NavBar from './components/nav-bar';
 import HomepageContainer from './containers/homepage-container';
+import DayDetailsContainer from './containers/day-details-container';
+import AllDaysContainer from './containers/all-days-container';
 import './App.css';
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
             <NavBar />
             <LoginContainer />
             <HomepageContainer />
+            <DayDetailsContainer />
+            <AllDaysContainer />
         </div>
     );
 }

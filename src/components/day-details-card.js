@@ -3,6 +3,7 @@ import React from 'react';
 import MoodRatingWidget from './mood-rating-widget';
 import SleepWidget from './sleep-widget';
 import NewNoteForm from './new-note-form';
+import HabitWidget from './habit-widget';
 import './day-details-card.scss';
 
 
@@ -30,10 +31,10 @@ class DayDetailsCard extends React.Component {
                     <div className="day-details-card__habits">
                         <div className="day-details-card__header day-details-card--habits">my habits</div>
                         <ul className="day-details-card__habits-list">
-                            <li>PLACEHOLDER HABIT</li>
-                            <li>PLACEHOLDER HABIT</li>
-                            <li>PLACEHOLDER HABIT</li>
-                            <li>PLACEHOLDER HABIT</li>
+                            <li><HabitWidget /></li>
+                            <li><HabitWidget /></li>
+                            <li><HabitWidget /></li>
+                            <li><HabitWidget /></li>
                         </ul>
                         <a href="/">manage habits</a>
                     </div>
