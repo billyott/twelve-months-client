@@ -1,11 +1,14 @@
+// import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+
+import LoginContainer from './containers/login-container'
+import Header from './components/header'
 import './App.css';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
 function App() {
 
     return (
         <div className="App">
-            <BrowserRouter>
+            {/* <BrowserRouter>
                 <Switch >
                 <Route path="/profile">
                     {!!this.state.jwt ? <Profile user={this.state.user} jwt={this.state.jwt} updateUserHandler={this.updateUserHandler}/> : <Redirect to="/login" />}
@@ -14,7 +17,9 @@ function App() {
                     {!!this.state.jwt ? <MainContainer user={this.state.user} jwt={this.state.jwt}/> : <Redirect to="/login" />}
                 </Route>
                 </Switch>
-            </BrowserRouter>
+            </BrowserRouter> */}
+            <Header />
+            <LoginContainer />
         </div>
     );
 }
