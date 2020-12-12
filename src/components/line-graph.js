@@ -6,6 +6,7 @@ import { ResponsiveLine } from '@nivo/line'
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
+import './line-graph.scss';
 
 const LineGraph = ({ data = [] /* see data tab */ }) => (
     <ResponsiveLine

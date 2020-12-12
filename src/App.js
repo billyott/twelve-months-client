@@ -6,7 +6,8 @@ import HomepageContainer from './containers/homepage-container';
 import DayDetailsContainer from './containers/day-details-container';
 import AllDaysContainer from './containers/all-days-container';
 import ManageHabitsContainer from './containers/manage-habits-container';
-import TrendContainer from './containers/trend-container'
+import TrendContainer from './containers/trend-container';
+import AccountContainer from './containers/account-container';
 
 import './App.css';
 
@@ -22,6 +23,7 @@ function App() {
             <AllDaysContainer />
             <ManageHabitsContainer />
             <TrendContainer />
+            <AccountContainer />
         </div>
     );
 }
