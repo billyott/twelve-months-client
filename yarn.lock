@@ -1524,7 +1524,7 @@
     lodash "^4.17.11"
     react-motion "^0.5.2"
 
-"@nivo/core@0.66.0":
+"@nivo/core@0.66.0", "@nivo/core@^0.66.0":
   version "0.66.0"
   resolved "https://registry.yarnpkg.com/@nivo/core/-/core-0.66.0.tgz#2f638909138555b302475e1e84cca897355b6f17"
   integrity sha512-hUz79C93q9L4uPfADvjoPu7E4HXxNaBwQZX/wHOAZ+ZLpOLUOOCmN69OvZdozR9bSV3vFjs0+v+To6sp1Akx2Q==
@@ -11920,9 +11920,9 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 ua-parser-js@^0.7.18:
-  version "0.7.22"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.22.tgz#960df60a5f911ea8f1c818f3747b99c6e177eae3"
-  integrity sha512-YUxzMjJ5T71w6a8WWVcMGM6YWOTX27rCoIQgLXiWaxqXSx9D7DNjiGWn1aJIRSQ5qr0xuhra77bSIh6voR/46Q==
+  version "0.7.23"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.23.tgz#704d67f951e13195fbcd3d78818577f5bc1d547b"
+  integrity sha512-m4hvMLxgGHXG3O3fQVAyyAQpZzDOvwnhOTjYz5Xmr7r/+LpkNy3vJXdVRWgd1TkAb7NGROZuSy96CrlNVjA7KA==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
