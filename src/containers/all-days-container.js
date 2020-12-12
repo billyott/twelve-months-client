@@ -32,8 +32,8 @@ class AllDaysContainer extends React.Component{
                         <label className="all-days-container__label">select year</label>
                         <select className="all-days-container__filter" defaultValue="" onChange={this.handleInputUpdate}>
                             <option disabled={true} value={this.state.year}>-select year-</option>
-                            <option value="November">2020</option>
-                            <option value="December">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
                         </select>
                     </div>
                 </div>
