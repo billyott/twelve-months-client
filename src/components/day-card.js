@@ -2,7 +2,7 @@ import React from 'react'
 
 import MoodRatingWidget from './mood-rating-widget';
 import SleepWidget from './sleep-widget';
-import './day-details-card.scss';
+import './day-card.scss';
 
 
 function DayCard(props) {

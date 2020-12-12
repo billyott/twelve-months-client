@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DayCard from '../components/day-card'
+import HabitCard from '../components/habit-card'
 import './all-days-container.scss';
 
 
@@ -31,12 +31,12 @@ class ManageHabitsContainer extends React.Component{
                     </div>
                 </div>
                 <ul className="manage-habits-container__habit-cards-list">
-                    <li><DayCard /></li>
-                    <li><DayCard /></li>
-                    <li><DayCard /></li>
-                    <li><DayCard /></li>
-                    <li><DayCard /></li>
-                    <li><DayCard /></li>
+                    <li><HabitCard /></li>
+                    <li><HabitCard /></li>
+                    <li><HabitCard /></li>
+                    <li><HabitCard /></li>
+                    <li><HabitCard /></li>
+                    <li><HabitCard /></li>
                 </ul>
             </div>
         );
