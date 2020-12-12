@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 
 import './nav-bar.scss';
 
@@ -8,12 +9,16 @@ function NavBar() {
 
     return (
         <div className="nav-bar">
-            <a className="nav-bar__link" href="/">ALL DAYS</a>
-            <a className="nav-bar__link" href="/">MANAGE HABITS</a>
-            <a className="nav-bar__link" href="/">MY TRENDS</a>
-            <a className="nav-bar__link" href="/">MY ACCOUNT</a>
-            <a className="nav-bar__link" href="/">LOG OUT</a>
+            <NavLink to="/" className="nav-bar__link">HOME</NavLink>
+            <NavLink to="/days" className="nav-bar__link">ALL DAYS</NavLink>
+            <NavLink to="/habits" className="nav-bar__link">MANAGE HABITS</NavLink>
+            <NavLink to="/trends" className="nav-bar__link">MY TRENDS</NavLink>
+            <NavLink to="/my-account" className="nav-bar__link">MY ACCOUNT</NavLink>
+            <NavLink to="/login" className="nav-bar__link">LOG OUT</NavLink>
+            <NavLink to="/today" className="nav-bar__link">TODAY placeholder</NavLink>
         </div>
+
+        
     );
 
 }
