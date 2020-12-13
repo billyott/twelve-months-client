@@ -17,7 +17,7 @@ class DayDetailsCard extends React.Component {
         return(
             <div className="day-details-card">
                 <div className="day-details-card__left-container">
-                    <div className="day-details-card__header day-details-card--date">PLACEHOLDER DATE</div>
+                    <div className="day-details-card__header day-details-card--date">{this.props.date.format('ddd MM.DD.YY').toUpperCase()}</div>
                     <ul className="day-details-card__notes-list">
                         <li>PLACEHOLDER NOTE</li>
                         <li>PLACEHOLDER NOTE</li>
