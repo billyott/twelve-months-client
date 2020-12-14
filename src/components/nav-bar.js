@@ -14,7 +14,6 @@ function NavBar() {
             <NavLink to="/habits" className="nav-bar__link">MANAGE HABITS</NavLink>
             <NavLink to="/trends" className="nav-bar__link">MY TRENDS</NavLink>
             <NavLink to="/my-account" className="nav-bar__link">MY ACCOUNT</NavLink>
-            <NavLink to="/today" className="nav-bar__link">TODAY placeholder</NavLink>
         </div>
         
     );

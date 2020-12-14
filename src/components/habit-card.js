@@ -8,7 +8,7 @@ function HabitCard(props) {
 
     return (
         <div className="habit-card">
-            <div className="habit-card__header">PLACEHOLDER FOR HABIT TITLE</div>
+            <div className="habit-card__header">{props.habit.title}</div>
             <button className="habit-card__button">archive</button>
         </div>
     );

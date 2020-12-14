@@ -21,7 +21,6 @@ class EditNoteForm extends React.Component {
     }
 
     handleInputUpdate = (e) => {
-        console.log(e.target.name, e.target.value, this.state)
         this.setState({
             [e.target.name]: e.target.value,
         });

@@ -1,4 +1,4 @@
-import { USER_LOGIN, CREATE_USER, LOGOUT } from './action-types'
+import { USER_LOGIN, CREATE_USER, UPDATE_USER, LOGOUT } from './action-types'
 
 export const setUser = (userCreds) => {
     return function (dispatch) {
@@ -33,6 +33,16 @@ export const createUser = (userCreds) => {
         })
     }
 
+}
+
+export const updateUser = (userId) => {
+    return function (dispatch) {
+        fetch(`http://localhost:3000/users/${userId}`)
+        .then(resp => resp.json())
+        .then(updatedUser => {
+            dispatch({type: UPDATE_USER, payload: updatedUser})
+        })
+    }
 }
 
 export const logUserOut = () => ({type: LOGOUT, payload: {}})

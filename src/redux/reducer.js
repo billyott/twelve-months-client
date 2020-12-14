@@ -10,6 +10,8 @@ function userReducer(currentState=defaultState.user, action) {
             return action.payload;
         case "CREATE_USER":
             return action.payload;
+        case "UPDATE_USER":
+            return action.payload;
         case "LOGOUT":
             return action.payload;
         default:
