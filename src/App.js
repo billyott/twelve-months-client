@@ -26,6 +26,9 @@ function App(props) {
                     <Route path="/today">
                         {!!props.user.id ? <DayDetailsContainer /> : <Redirect to="/login"/>}
                     </Route>
+                    <Route path="/days/:date">
+                        {!!props.user.id ? <DayDetailsContainer /> : <Redirect to="/login"/>}
+                    </Route>
                     <Route path="/days">
                         {!!props.user.id ? <AllDaysContainer /> : <Redirect to="/login"/>}
                     </Route>

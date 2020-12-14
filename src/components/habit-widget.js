@@ -20,6 +20,20 @@ class HabitWidget extends React.Component {
         })
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.dayId !== this.props.dayId) {
+            fetch(`http://localhost:3000/day_habits?habit_id=${this.props.habit.id}&day_id=${this.props.dayId}`)
+            .then(resp => resp.json())
+            .then(dayHabit => {
+                if (dayHabit.id) {
+                    this.setState({checked: true, dayHabitId: dayHabit.id})
+                }
+            })
+        }
+
+    }
+
+
     createDayHabit = (dayId, habitId) => {
         fetch('http://localhost:3000/day_habits', {
             method: 'POST',

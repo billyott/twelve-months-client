@@ -16,8 +16,8 @@ class DayDetailsCard extends React.Component {
         showAddNoteForm: false,
         showEditMoodForm: false,
         showEditSleepForm: false,
-        mood_score: null,
-        sleep_hours: null,
+        mood_score: '',
+        sleep_hours: '',
         notes: []
     };
 
@@ -137,7 +137,7 @@ class DayDetailsCard extends React.Component {
                                 <div onClick={this.handleShowEditMoodForm}>{this.state.showEditMoodForm ? null : this.state.mood_score ? this.state.mood_score : "not logged"}</div>
                                 {this.state.showEditMoodForm ? 
                                 <form className="mood-rating-form" onSubmit={this.handleUpdateDay}>
-                                    <select className="mood-rating-form__select" name="mood_score" value={this.state.mood_score} onChange={this.handleInputUpdate}>
+                                    <select className="mood-rating-form__select" name="mood_score" value={this.state.mood_score || ""} onChange={this.handleInputUpdate}>
                                         <option value="1">1</option> 
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -160,7 +160,7 @@ class DayDetailsCard extends React.Component {
                                 <div onClick={this.handleShowEditSleepForm}>{this.state.showEditSleepForm ? null : this.state.sleep_hours ? this.state.sleep_hours : "not logged"}</div>
                                 {this.state.showEditSleepForm ? 
                                 <form className="sleep-hours-form" onSubmit={this.handleUpdateDay}>
-                                    <select className="sleep-hours-form__select" name="sleep_hours" value={this.state.sleep_hours} onChange={this.handleInputUpdate}>
+                                    <select className="sleep-hours-form__select" name="sleep_hours" value={this.state.sleep_hours || ""} onChange={this.handleInputUpdate}>
                                         <option value="1">1</option> 
                                         <option value="2">2</option>
                                         <option value="3">3</option>
