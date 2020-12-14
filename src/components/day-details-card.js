@@ -15,16 +15,25 @@ class DayDetailsCard extends React.Component {
     state = {
         showAddNoteForm: false,
         showEditMoodForm: false,
+        showEditSleepForm: false,
+        mood_score: null,
+        sleep_hours: null,
         notes: []
     };
 
     componentDidMount() {
-        this.setState({notes: this.props?.day?.notes || []})
+        this.setState({notes: this.props?.day?.notes || [], mood_score: this.props?.day?.mood_score || null, sleep_hours: this.props?.day?.sleep_hours || null})
     }
 
     componentDidUpdate(prevProps) {
         if (!isEqual(prevProps.day?.notes, this.props.day?.notes)) {
           this.setState({ notes: this.props.day?.notes || [] });
+        }
+        if (prevProps.day?.mood_score !== this.props.day?.mood_score) {
+            this.setState({ mood_score: this.props?.day?.mood_score || null});
+        }
+        if (prevProps.day?.sleep_hours !== this.props.day?.sleep_hours) {
+            this.setState({ sleep_hours: this.props?.day?.sleep_hours || null});
         }
     }
 
@@ -60,6 +69,47 @@ class DayDetailsCard extends React.Component {
         })
     }
 
+    handleShowEditMoodForm = () => {
+        this.setState(prevState => {
+            return({showEditMoodForm: !prevState.showEditMoodForm})
+        })
+    }
+
+    handleShowEditSleepForm = () => {
+        this.setState(prevState => {
+            return({showEditSleepForm: !prevState.showEditSleepForm})
+        })
+    }   
+
+    handleInputUpdate = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value,
+        });
+    }
+
+    handleUpdateDay = (e) => {
+        e.preventDefault()
+        fetch(`http://localhost:3000/days/${this.props.day.id}`, {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                id: this.props.day.id,
+                user_id: this.props.day.user.id,
+                mood_score: this.state.mood_score,
+                sleep_hours: this.state.sleep_hours
+            })
+        })
+        .then(resp => resp.json())
+        .then(updatedDay => {
+            this.setState({
+                mood_score: updatedDay.mood_score,
+                sleep_hours: updatedDay.sleep_hours,
+                showEditMoodForm: false,
+                showEditSleepForm: false
+            })
+        })
+    }
+
     render(){
         return(
             <div className="day-details-card">
@@ -83,13 +133,48 @@ class DayDetailsCard extends React.Component {
                         <div className="day-details-card__header day-details-card--mood-sleep">mood + sleep</div>
                         <div className="mood-rating-widget">
                             <div className="mood-rating-widget__header">mood rating</div>
-                            <div className="mood-rating-widget__value">{this.props?.day?.mood_score ? this.props.day.mood_score : "not logged"}</div>
+                            <div className="mood-rating-widget__value">
+                                <div onClick={this.handleShowEditMoodForm}>{this.state.showEditMoodForm ? null : this.state.mood_score ? this.state.mood_score : "not logged"}</div>
+                                {this.state.showEditMoodForm ? 
+                                <form className="mood-rating-form" onSubmit={this.handleUpdateDay}>
+                                    <select className="mood-rating-form__select" name="mood_score" value={this.state.mood_score} onChange={this.handleInputUpdate}>
+                                        <option value="1">1</option> 
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <button className="mood-rating-form__button">Submit</button>
+                                </form>
+                                : null}
+                            </div>
                         </div>
                         <div className="sleep-widget">
                             <div className="sleep-widget__header">hours of sleep last night</div>
                             <div className="sleep-widget__value">
-                                {this.state.showEditMoodForm ? null : this.props?.day?.sleep_hours ? this.props.day.sleep_hours : "not logged"}
-                                {/* {this.state.showEditMoodForm ? : } */}
+                                <div onClick={this.handleShowEditSleepForm}>{this.state.showEditSleepForm ? null : this.state.sleep_hours ? this.state.sleep_hours : "not logged"}</div>
+                                {this.state.showEditSleepForm ? 
+                                <form className="sleep-hours-form" onSubmit={this.handleUpdateDay}>
+                                    <select className="sleep-hours-form__select" name="sleep_hours" value={this.state.sleep_hours} onChange={this.handleInputUpdate}>
+                                        <option value="1">1</option> 
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <button className="sleep-hours-form__button">Submit</button>
+                                </form>
+                                : null}
                             </div>
                         </div>
                     </div>

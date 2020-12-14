@@ -40,7 +40,7 @@ class EditNoteForm extends React.Component {
                 <label className="edit-note-form__label">note</label>
                 <input className="edit-note-form__input" name="note" value={this.state.note} onChange={this.handleInputUpdate}></input>
                 <label className="edit-note-form__label">note type</label>
-                <select className="edit-note-form__select" name="note_type" defaultValue={this.props.note.note_type} onChange={this.handleInputUpdate}>
+                <select className="edit-note-form__select" name="note_type" value={this.props.note.note_type} onChange={this.handleInputUpdate}>
                     <option disabled={true} value={this.state.note_type}>-select note type-</option>
                     <option value="Thought">Thought</option> 
                     <option value="Event">Event</option>

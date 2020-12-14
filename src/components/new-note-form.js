@@ -29,7 +29,7 @@ class NewNoteForm extends React.Component {
                 <label className="new-note-form__label">new note</label>
                 <input className="new-note-form__input" name="note" placeholder="what's on your mind?" value={this.state.note} onChange={this.handleInputUpdate}></input>
                 <label className="new-note-form__label">note type</label>
-                <select className="new-note-form__select" name="note_type" defaultValue="" onChange={this.handleInputUpdate}>
+                <select className="new-note-form__select" name="note_type" onChange={this.handleInputUpdate}>
                     <option disabled={true} value={this.state.note_type}>-select note type-</option>
                     <option value="Thought">Thought</option>
                     <option value="Event">Event</option>
