@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
 import dayjs from 'dayjs';
+import { isEqual } from 'lodash';
 
 import Note from './note'
 import NewNoteForm from './new-note-form';
@@ -13,8 +14,19 @@ class DayDetailsCard extends React.Component {
 
     state = {
         showAddNoteForm: false,
-        newNotes: []
+        showEditMoodForm: false,
+        notes: []
     };
+
+    componentDidMount() {
+        this.setState({notes: this.props?.day?.notes || []})
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!isEqual(prevProps.day?.notes, this.props.day?.notes)) {
+          this.setState({ notes: this.props.day?.notes || [] });
+        }
+    }
 
     handleShowNewNoteForm = () => {
         this.setState(prevState => {
@@ -32,8 +44,19 @@ class DayDetailsCard extends React.Component {
         .then(newNote => {
             this.handleShowNewNoteForm()
             this.setState(prevState => {
-                return ({newNotes: [...prevState.newNotes, newNote]})
+                return ({notes: [...prevState.notes, newNote]})
             })
+        })
+    }
+
+    handleDeleteNote = (noteId) => {
+        fetch(`http://localhost:3000/notes/${noteId}`,{method: 'DELETE'})
+        .then(resp => resp.json())
+        .then(data => {
+            const updatedNotes = [...this.state.notes]
+            const index = updatedNotes.findIndex(note => note.id === noteId)
+            updatedNotes.splice(index, 1)
+            this.setState({notes: updatedNotes})
         })
     }
 
@@ -43,7 +66,7 @@ class DayDetailsCard extends React.Component {
                 <div className="day-details-card__left-container">
                     <div className="day-details-card__header day-details-card--date">{dayjs(this.props?.day?.date).format('ddd MM.DD.YY').toUpperCase()}</div>
                     <ul className="day-details-card__notes-list">
-                        {[...this.props?.day?.notes || [], ...this.state.newNotes].map(note => <li key={note.id}><Note note={note} dayId={this.props.day.id}/></li>)}
+                        {this.state?.notes?.map(note => <li key={note.id}><Note note={note} dayId={this.props.day.id} handleDeleteNote={this.handleDeleteNote}/></li>)}
                     </ul>
                     {this.state.showAddNoteForm ? <NewNoteForm dayId={this.props.day.id} handleCreateNoteSubmit={this.handleCreateNoteSubmit}/> : null}
                     <button className="day-details-card__button" onClick={this.handleShowNewNoteForm}>+ add note</button>
@@ -64,7 +87,10 @@ class DayDetailsCard extends React.Component {
                         </div>
                         <div className="sleep-widget">
                             <div className="sleep-widget__header">hours of sleep last night</div>
-                            <div className="sleep-widget__value">{this.props?.day?.sleep_hours ? this.props.day.sleep_hours : "not logged"}</div>
+                            <div className="sleep-widget__value">
+                                {this.state.showEditMoodForm ? null : this.props?.day?.sleep_hours ? this.props.day.sleep_hours : "not logged"}
+                                {/* {this.state.showEditMoodForm ? : } */}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -6,10 +6,19 @@ class Note extends React.Component {
 
     state = {
         showEditNoteForm: false,
-        updatedNote: '',
-        updatedNoteType: '',
+        note: {},
         deleted: false
     };
+
+    componentDidMount() {
+        this.setState({note: this.props?.note || {}})
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.note !== this.props.note) {
+            this.setState({note: this.props.note || {}})
+        }
+    }
 
     handleShowEditNoteForm = () => {
         this.setState(prevState => {
@@ -25,30 +34,21 @@ class Note extends React.Component {
         })
         .then(resp => resp.json())
         .then(newNote => {
-            this.setState({updatedNote: newNote.note, updatedNoteType: newNote.note_type})
+            this.setState({note: newNote})
         })
     }
 
-    handleDeleteNote = () => {
-        fetch(`http://localhost:3000/notes/${this.props.note.id}`,{method: 'DELETE'})
-        .then(resp => resp.json())
-        .then(data => {
-            this.setState({deleted: true})
-        })
+    localHandleDeleteNote = () => {
+        this.props.handleDeleteNote(this.props.note.id)
     }
 
     render(){
         return(
-            <>
-            {this.state.deleted ?
-            null : 
             <div className="note">
-                {this.state.showEditNoteForm ? <EditNoteForm note={this.props.note} dayId={this.props.dayId} handleShowEditNoteForm={this.handleShowEditNoteForm} handleUpdateNote={this.handleUpdateNote} /> : null}
-                {this.state.showEditNoteForm ? null : <div onClick={this.handleShowEditNoteForm}>{this.state.updatedNoteType ? this.state.updatedNoteType : this.props.note.note_type} - {this.state.updatedNote ? this.state.updatedNote : this.props.note.note}</div>}
-                <button className="note__button" onClick={this.handleDeleteNote}>delete</button>
+                {this.state.showEditNoteForm ? <EditNoteForm note={this.state.note} dayId={this.props.dayId} handleShowEditNoteForm={this.handleShowEditNoteForm} handleUpdateNote={this.handleUpdateNote} /> : null}
+                {this.state.showEditNoteForm ? null : <div onClick={this.handleShowEditNoteForm}>{this.state.note.note_type} - {this.state.note.note}</div>}
+                <button className="note__button" onClick={this.localHandleDeleteNote}>delete</button>
             </div>
-            }
-            </>
         );
     }
 
