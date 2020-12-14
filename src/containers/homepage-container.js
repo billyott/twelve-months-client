@@ -15,11 +15,9 @@ class HomepageContainer extends React.Component {
     
  
     componentDidMount() {
-
         fetch(`http://localhost:3000/days?user_id=${this.props.userId}`)
         .then(resp => resp.json())
         .then(days => this.setState({days: days}))
-
     }
 
     render() {
