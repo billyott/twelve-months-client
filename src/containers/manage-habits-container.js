@@ -40,6 +40,30 @@ class ManageHabitsContainer extends React.Component{
         });
     };
 
+    handleUpdateHabit = (habitObj) => {
+        fetch(`http://localhost:3000/habits/${habitObj.id}`,{
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(habitObj)
+        })
+        .then(resp => resp.json())
+        .then(updatedHabit => {
+            console.log(updatedHabit)
+            this.props.handleAddHabitViaUpdateUser(updatedHabit.user.id)
+        })
+    }
+
+    selectedHabits = () => {
+        if (this.state.selectedHabits === 'current habits') {
+            return this.props.user.habits.filter(habit => habit.archived === false)
+        } else if (this.state.selectedHabits === 'archived habits') {
+            return this.props.user.habits.filter(habit => habit.archived === true)
+        } else {
+            return this.props.user.habits
+        }
+
+    }
+
     render () {
         return (
             <div className="manage-habits-container">
@@ -55,7 +79,7 @@ class ManageHabitsContainer extends React.Component{
                     </div>
                 </div>
                 <ul className="manage-habits-container__habit-cards-list">
-                    {this.props.user.habits.map(habit => <li key={habit.id}><HabitCard habit={habit} /></li>)}
+                    {this.selectedHabits().map(habit => <li key={habit.id}><HabitCard habit={habit} userId={this.props.user.id} handleUpdateHabit={this.handleUpdateHabit} /></li>)}
                 </ul>
                 {this.state.showAddHabitForm ? 
                 <form className="manage-habits-container__form" onSubmit={this.handleCreateHabit}>

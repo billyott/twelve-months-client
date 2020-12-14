@@ -125,7 +125,7 @@ class DayDetailsCard extends React.Component {
                     <div className="day-details-card__habits">
                         <div className="day-details-card__header day-details-card--habits">my habits</div>
                         <ul className="day-details-card__habits-list">
-                            {this.props.day ? this.props.user.habits.map(habit => <li key={habit.id}><HabitWidget habit={habit} dayId={this.props.day.id} /></li>) : null}
+                            {this.props.day ? this.props.user.habits.map(habit => habit.archived ? null : <li key={habit.id}><HabitWidget habit={habit} dayId={this.props.day.id} /></li>) : null}
                         </ul> 
                         <NavLink to="/habits" className="day-details-card__link">manage habits</NavLink>
                     </div>
