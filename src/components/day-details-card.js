@@ -1,7 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import dayjs from 'dayjs';
 
-import MoodRatingWidget from './mood-rating-widget';
-import SleepWidget from './sleep-widget';
 import NewNoteForm from './new-note-form';
 import HabitWidget from './habit-widget';
 import './day-details-card.scss';
@@ -11,18 +11,15 @@ class DayDetailsCard extends React.Component {
 
     state = {
         showAddNoteForm: true
-    }
+    };
 
     render(){
         return(
             <div className="day-details-card">
                 <div className="day-details-card__left-container">
-                    <div className="day-details-card__header day-details-card--date">{this.props.date.format('ddd MM.DD.YY').toUpperCase()}</div>
+                    <div className="day-details-card__header day-details-card--date">{dayjs(this.props?.day?.date).format('ddd MM.DD.YY').toUpperCase()}</div>
                     <ul className="day-details-card__notes-list">
-                        <li>PLACEHOLDER NOTE</li>
-                        <li>PLACEHOLDER NOTE</li>
-                        <li>PLACEHOLDER NOTE</li>
-                        <li>PLACEHOLDER NOTE</li>
+                        {this.props?.day?.notes.map(note => <li key={note.id}>{`${note.note_type} - ${note.note}`}</li>)}
                     </ul>
                     {this.state.showAddNoteForm ? <NewNoteForm /> : null}
                     <button className="day-details-card__button">+ add note</button>
@@ -31,17 +28,20 @@ class DayDetailsCard extends React.Component {
                     <div className="day-details-card__habits">
                         <div className="day-details-card__header day-details-card--habits">my habits</div>
                         <ul className="day-details-card__habits-list">
-                            <li><HabitWidget /></li>
-                            <li><HabitWidget /></li>
-                            <li><HabitWidget /></li>
-                            <li><HabitWidget /></li>
+                            {this.props.day ? this.props.user.habits.map(habit => <li key={habit.id}><HabitWidget habit={habit} dayId={this.props.day.id} /></li>) : null}
                         </ul>
                         <a href="/">manage habits</a>
                     </div>
                     <div className="day-details-card__mood-sleep">
                         <div className="day-details-card__header day-details-card--mood-sleep">mood + sleep</div>
-                        <MoodRatingWidget />
-                        <SleepWidget />
+                        <div className="mood-rating-widget">
+                            <div className="mood-rating-widget__header">mood rating</div>
+                            <div className="mood-rating-widget__header">PLACEHOLDER FOR MOOD RATING</div>
+                        </div>
+                        <div className="sleep-widget">
+                            <div className="sleep-widget__header">hours of sleep last night</div>
+                            <div className="sleep-widget__header">PLACEHOLDER FOR SLEEP HOURS</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,4 +50,10 @@ class DayDetailsCard extends React.Component {
 
 }
 
-export default DayDetailsCard;
+
+const mapStateToProps = state => {
+    return {user: state.user};
+}
+
+
+export default connect(mapStateToProps)(DayDetailsCard);
