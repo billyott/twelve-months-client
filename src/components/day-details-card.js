@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom'
 import dayjs from 'dayjs';
 
 import NewNoteForm from './new-note-form';
@@ -10,8 +11,14 @@ import './day-details-card.scss';
 class DayDetailsCard extends React.Component {
 
     state = {
-        showAddNoteForm: true
+        showAddNoteForm: false
     };
+
+    handleShowNewNoteForm = () => {
+        this.setState(prevState => {
+            return ({showAddNoteForm: !prevState.showAddNoteForm})
+        });
+    }
 
     render(){
         return(
@@ -21,8 +28,8 @@ class DayDetailsCard extends React.Component {
                     <ul className="day-details-card__notes-list">
                         {this.props?.day?.notes.map(note => <li key={note.id}>{`${note.note_type} - ${note.note}`}</li>)}
                     </ul>
-                    {this.state.showAddNoteForm ? <NewNoteForm /> : null}
-                    <button className="day-details-card__button">+ add note</button>
+                    {this.state.showAddNoteForm ? <NewNoteForm dayId={this.props.day.id}/> : null}
+                    <button className="day-details-card__button" onClick={this.handleShowNewNoteForm}>+ add note</button>
                 </div>
                 <div className="day-details-card__right-container">
                     <div className="day-details-card__habits">
@@ -30,7 +37,7 @@ class DayDetailsCard extends React.Component {
                         <ul className="day-details-card__habits-list">
                             {this.props.day ? this.props.user.habits.map(habit => <li key={habit.id}><HabitWidget habit={habit} dayId={this.props.day.id} /></li>) : null}
                         </ul>
-                        <a href="/">manage habits</a>
+                        <NavLink to="/habits" className="day-details-card__link">manage habits</NavLink>
                     </div>
                     <div className="day-details-card__mood-sleep">
                         <div className="day-details-card__header day-details-card--mood-sleep">mood + sleep</div>
