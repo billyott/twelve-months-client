@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
 import dayjs from 'dayjs';
 
+import Note from './note'
 import NewNoteForm from './new-note-form';
 import HabitWidget from './habit-widget';
 import './day-details-card.scss';
@@ -11,7 +12,8 @@ import './day-details-card.scss';
 class DayDetailsCard extends React.Component {
 
     state = {
-        showAddNoteForm: false
+        showAddNoteForm: false,
+        newNotes: []
     };
 
     handleShowNewNoteForm = () => {
@@ -20,15 +22,29 @@ class DayDetailsCard extends React.Component {
         });
     }
 
+    handleCreateNoteSubmit = (noteObj) => {
+        fetch('http://localhost:3000/notes',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(noteObj)
+        })
+        .then(resp => resp.json())
+        .then(newNote => {
+            this.setState(prevState => {
+                return ({newNotes: [...prevState.newNotes, newNote]})
+            })
+        })
+    }
+
     render(){
         return(
             <div className="day-details-card">
                 <div className="day-details-card__left-container">
                     <div className="day-details-card__header day-details-card--date">{dayjs(this.props?.day?.date).format('ddd MM.DD.YY').toUpperCase()}</div>
                     <ul className="day-details-card__notes-list">
-                        {this.props?.day?.notes.map(note => <li key={note.id}>{`${note.note_type} - ${note.note}`}</li>)}
+                        {[...this.props?.day?.notes || [], ...this.state.newNotes].map(note => <li key={note.id}><Note note={note}/></li>)}
                     </ul>
-                    {this.state.showAddNoteForm ? <NewNoteForm dayId={this.props.day.id}/> : null}
+                    {this.state.showAddNoteForm ? <NewNoteForm dayId={this.props.day.id} handleCreateNoteSubmit={this.handleCreateNoteSubmit}/> : null}
                     <button className="day-details-card__button" onClick={this.handleShowNewNoteForm}>+ add note</button>
                 </div>
                 <div className="day-details-card__right-container">

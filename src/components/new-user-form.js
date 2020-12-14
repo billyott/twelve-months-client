@@ -19,14 +19,14 @@ class NewUserForm extends React.Component {
         });
     };
 
-    createUserSubmitHandler = (e) => {
+    handleCreateUserSubmit = (e) => {
         e.preventDefault()
-        this.props.createUserSubmitHandler(this.state)
+        this.props.handleCreateUserSubmit(this.state)
     }
 
     render(){
         return(
-            <form className="new-user-form" onSubmit={this.createUserSubmitHandler}>
+            <form className="new-user-form" onSubmit={this.handleCreateUserSubmit}>
                 <div className="new-user-form__text">
                     ...or if you're new here...
                 </div>
@@ -45,7 +45,7 @@ class NewUserForm extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {createUserSubmitHandler: (userCreds) => dispatch(createUser(userCreds))}
+    return {handleCreateUserSubmit: (userCreds) => dispatch(createUser(userCreds))}
 };
 
 
