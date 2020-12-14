@@ -30,6 +30,7 @@ class DayDetailsCard extends React.Component {
         })
         .then(resp => resp.json())
         .then(newNote => {
+            this.handleShowNewNoteForm()
             this.setState(prevState => {
                 return ({newNotes: [...prevState.newNotes, newNote]})
             })
@@ -42,7 +43,7 @@ class DayDetailsCard extends React.Component {
                 <div className="day-details-card__left-container">
                     <div className="day-details-card__header day-details-card--date">{dayjs(this.props?.day?.date).format('ddd MM.DD.YY').toUpperCase()}</div>
                     <ul className="day-details-card__notes-list">
-                        {[...this.props?.day?.notes || [], ...this.state.newNotes].map(note => <li key={note.id}><Note note={note}/></li>)}
+                        {[...this.props?.day?.notes || [], ...this.state.newNotes].map(note => <li key={note.id}><Note note={note} dayId={this.props.day.id}/></li>)}
                     </ul>
                     {this.state.showAddNoteForm ? <NewNoteForm dayId={this.props.day.id} handleCreateNoteSubmit={this.handleCreateNoteSubmit}/> : null}
                     <button className="day-details-card__button" onClick={this.handleShowNewNoteForm}>+ add note</button>

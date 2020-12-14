@@ -18,7 +18,9 @@ class NewNoteForm extends React.Component {
 
     localHandleCreateNoteSubmit = (e) => {
         e.preventDefault()
-        this.props.handleCreateNoteSubmit({...this.state, important: false, day_id: this.props.dayId})
+        if (this.state.note && this.state.note_type) {
+            this.props.handleCreateNoteSubmit({...this.state, important: false, day_id: this.props.dayId})
+        }
     }
 
     render(){
