@@ -43,11 +43,11 @@ class DayDetailsCard extends React.Component {
                         <div className="day-details-card__header day-details-card--mood-sleep">mood + sleep</div>
                         <div className="mood-rating-widget">
                             <div className="mood-rating-widget__header">mood rating</div>
-                            <div className="mood-rating-widget__header">PLACEHOLDER FOR MOOD RATING</div>
+                            <div className="mood-rating-widget__value">{this.props?.day?.mood_score ? this.props.day.mood_score : "not logged"}</div>
                         </div>
                         <div className="sleep-widget">
                             <div className="sleep-widget__header">hours of sleep last night</div>
-                            <div className="sleep-widget__header">PLACEHOLDER FOR SLEEP HOURS</div>
+                            <div className="sleep-widget__value">{this.props?.day?.sleep_hours ? this.props.day.sleep_hours : "not logged"}</div>
                         </div>
                     </div>
                 </div>

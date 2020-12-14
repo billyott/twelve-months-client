@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import DayDetailsCard from '../components/day-details-card';
@@ -30,7 +31,7 @@ class HomepageContainer extends React.Component {
                 </div>
                 <div className="homepage-container__bottom">
                     <div className="homepage-container__header">Past Three Days</div>
-                    <a className="homepage-container__link" href="/">see all days</a>
+                    <NavLink to="/days" className="homepage-container__link">see all days</NavLink>
                     <ul className="homepage-container__day-cards-list">
                         {this.state.days.slice(1).map(day => <li key={day.id}><DayCard day={day}/></li>)}
                     </ul>
