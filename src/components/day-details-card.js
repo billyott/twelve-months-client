@@ -26,13 +26,13 @@ class DayDetailsCard extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (!isEqual(prevProps.day?.notes, this.props.day?.notes)) {
+        if (!isEqual(prevProps.day?.id, this.props.day?.id) || !isEqual(prevProps.day?.notes, this.props.day?.notes)) {
           this.setState({ notes: this.props.day?.notes || [] });
         }
-        if (prevProps.day?.mood_score !== this.props.day?.mood_score) {
+        if (!isEqual(prevProps.day?.id, this.props.day?.id) || prevProps.day?.mood_score !== this.props.day?.mood_score) {
             this.setState({ mood_score: this.props?.day?.mood_score || null});
         }
-        if (prevProps.day?.sleep_hours !== this.props.day?.sleep_hours) {
+        if (!isEqual(prevProps.day?.id, this.props.day?.id) || prevProps.day?.sleep_hours !== this.props.day?.sleep_hours) {
             this.setState({ sleep_hours: this.props?.day?.sleep_hours || null});
         }
     }
@@ -149,7 +149,7 @@ class DayDetailsCard extends React.Component {
                                         <option value="9">9</option>
                                         <option value="10">10</option>
                                     </select>
-                                    <button className="mood-rating-form__button">Submit</button>
+                                    <button className="mood-rating-form__button" type="submit">Submit</button>
                                 </form>
                                 : null}
                             </div>
@@ -172,7 +172,7 @@ class DayDetailsCard extends React.Component {
                                         <option value="9">9</option>
                                         <option value="10">10</option>
                                     </select>
-                                    <button className="sleep-hours-form__button">Submit</button>
+                                    <button className="sleep-hours-form__button" type="submit">Submit</button>
                                 </form>
                                 : null}
                             </div>

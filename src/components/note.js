@@ -1,6 +1,7 @@
 import React from 'react';
+import { isEqual } from 'lodash';
 
-import EditNoteForm from './edit-note-form'
+import EditNoteForm from './edit-note-form';
 
 class Note extends React.Component {
 
@@ -15,7 +16,7 @@ class Note extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.note !== this.props.note) {
+        if (!isEqual(prevProps.note, this.props.note)) {
             this.setState({note: this.props.note || {}})
         }
     }

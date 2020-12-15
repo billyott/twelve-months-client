@@ -24,7 +24,7 @@ class ManageHabitsContainer extends React.Component{
         .then(resp => resp.json())
         .then(newHabit => {
             this.props.handleAddHabitViaUpdateUser(newHabit.user.id)
-            this.setState({showAddHabitForm: false})
+            this.setState({showAddHabitForm: false, habitTitle: ''})
         })
     }
 

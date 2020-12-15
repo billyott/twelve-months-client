@@ -16,6 +16,8 @@ class HabitWidget extends React.Component {
         .then(dayHabit => {
             if (dayHabit.id) {
                 this.setState({checked: true, dayHabitId: dayHabit.id})
+            } else {
+                this.setState({checked: false, dayHabitId: null})
             }
         })
     }
@@ -27,6 +29,8 @@ class HabitWidget extends React.Component {
             .then(dayHabit => {
                 if (dayHabit.id) {
                     this.setState({checked: true, dayHabitId: dayHabit.id})
+                } else {
+                    this.setState({checked: false, dayHabitId: null})
                 }
             })
         }

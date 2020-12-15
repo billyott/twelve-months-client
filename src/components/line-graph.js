@@ -70,4 +70,4 @@ const LineGraph = ({ data = [] /* see data tab */ }) => (
     />
 )
 
-export default LineGraph
+export default LineGraph;
