@@ -1,52 +1,36 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import { connect } from 'react-redux';
+import DatePicker from 'react-datepicker';
 
 import LineGraph from '../components/line-graph';
-import { data } from '../lib/test-data';
 
 import './trend-container.scss';
 
 
 class TrendContainer extends React.Component{
 
-    // [dateRange, setDateRange] = () => useState(''),
-    // [aggregation, setAggregation] = () =>  useState(''),
-    // [formData, setFormData] = () => useState({});
-
-
     state = {
-        month: '',
-        year: '',
+        startDate: Date.parse('2020/11/01'),
+        endDate: new Date(),
         days: [],
         data: []
     };
 
-    handleInputUpdate = (e) => {
-        if (e.target.name === "month") {
-            this.setState({month: e.target.value})
-        } 
-        if (e.target.name === "year") {
-            this.setState({year: e.target.value})
-        }
-    };
-
     componentDidMount() {
-        this.getCurrentMonthAndYear()
+        this.getInitialStartAndEndDates()
     }
 
-    getCurrentMonthAndYear = () => {
+    getInitialStartAndEndDates = () => {
         const now = dayjs()
         const month = dayjs(now).month()+1
         const year = dayjs(now).year()
-        this.setState({
-            month: month,
-            year: year
-        })
         const startDate = `${year}-${month}-01`
         const endDate = `${year}-${month}-${dayjs(startDate).daysInMonth()}`
-        // const startDate = '2020-11-01'
-        // const endDate = '2020-11-07'
+        this.setState({
+            startDate: Date.parse(`${year}/${month}/01`),
+            endDate: Date.parse(`${year}/${month}/${dayjs(startDate).daysInMonth()}`)
+        })
         fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${startDate}&end_date=${endDate}`)
         .then(resp => resp.json())
         .then(days => {
@@ -60,9 +44,7 @@ class TrendContainer extends React.Component{
 
     filterDays = (e) => {
         e.preventDefault()
-        const startDate = `${this.state.year}-${this.state.month}-01`
-        const endDate = `${this.state.year}-${this.state.month}-${dayjs(startDate).daysInMonth()}`
-        fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${startDate}&end_date=${endDate}`)
+        fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${this.state.startDate}&end_date=${this.state.endDate}`)
         .then(resp => resp.json())
         .then(days => {
             const data = this.stageData(days)
@@ -94,7 +76,12 @@ class TrendContainer extends React.Component{
                 <div className="trend-container__header-items">
                     <div className="trend-container__header">Trends</div>
                     <div className="trend-container-container__filters">
-                        <form className="trend-container-container___form" onSubmit={this.filterDays}>
+                        <label className="trend-container-container__label">start date</label>
+                        <DatePicker selected={this.state.startDate} onChange={date => this.setState({startDate: date})}/>
+                        <label className="trend-container-container__label">end date</label>
+                        <DatePicker selected={this.state.endDate} onChange={date => this.setState({endDate: date})}/>
+                        <button className="trend-container-container__button" onClick={this.filterDays}>update date filters</button>
+                        {/* <form className="trend-container-container___form" onSubmit={this.filterDays}>
                             <label className="trend-container-container__label">select month</label>
                             <select className="trend-container-container__filter" name="month" value={this.state.month} onChange={this.handleInputUpdate}>
                                 <option disabled value="">-select month-</option>
@@ -118,11 +105,10 @@ class TrendContainer extends React.Component{
                                 <option value="2021">2021</option>
                             </select>
                             <button className="trend-container-container__button" type="submit">apply filter</button>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
                 <div className="trend-container__graph-container">
-                    {/* <LineGraph {...{ data }} /> */}
                     <LineGraph {...this.state.data} />
                 </div>
             </div>
