@@ -26,14 +26,17 @@ class DayDetailsCard extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        if (!isEqual(prevProps.day?.id, this.props.day?.id)) {
+            this.setState({ showAddNoteForm: false, showEditMoodForm: false, showEditSleepForm: false});
+        }
         if (!isEqual(prevProps.day?.id, this.props.day?.id) || !isEqual(prevProps.day?.notes, this.props.day?.notes)) {
           this.setState({ notes: this.props.day?.notes || [] });
         }
         if (!isEqual(prevProps.day?.id, this.props.day?.id) || prevProps.day?.mood_score !== this.props.day?.mood_score) {
-            this.setState({ mood_score: this.props?.day?.mood_score || null});
+            this.setState({ mood_score: this.props?.day?.mood_score || null, showEditMoodForm: false});
         }
         if (!isEqual(prevProps.day?.id, this.props.day?.id) || prevProps.day?.sleep_hours !== this.props.day?.sleep_hours) {
-            this.setState({ sleep_hours: this.props?.day?.sleep_hours || null});
+            this.setState({ sleep_hours: this.props?.day?.sleep_hours || null, showEditSleepForm: false});
         }
     }
 
