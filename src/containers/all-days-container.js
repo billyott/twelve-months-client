@@ -1,4 +1,6 @@
 import React from 'react';
+import dayjs from 'dayjs';
+import { connect } from 'react-redux';
 
 import DayCard from '../components/day-card';
 import './all-days-container.scss';
@@ -8,42 +10,86 @@ class AllDaysContainer extends React.Component{
 
     state = {
         month: '',
-        year: ''
+        year: '',
+        days: []
     };
 
     handleInputUpdate = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
+        if (e.target.name === "month") {
+            this.setState({month: e.target.value})
+        } 
+        if (e.target.name === "year") {
+            this.setState({year: e.target.value})
+        }
     };
+
+    componentDidMount() {
+        this.getCurrentMonthAndYear()
+    }
+
+    getCurrentMonthAndYear = () => {
+        const now = dayjs()
+        const month = dayjs(now).month()+1
+        const year = dayjs(now).year()
+        this.setState({
+            month: month,
+            year: year
+        })
+        const startDate = `${year}-${month}-01`
+        const endDate = `${year}-${month}-${dayjs(startDate).daysInMonth()}`
+        fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${startDate}&end_date=${endDate}`)
+        .then(resp => resp.json())
+        .then(days => {
+            this.setState({days})
+        })
+    }
+
+    filterDays = (e) => {
+        e.preventDefault()
+        const startDate = `${this.state.year}-${this.state.month}-01`
+        const endDate = `${this.state.year}-${this.state.month}-${dayjs(startDate).daysInMonth()}`
+        fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${startDate}&end_date=${endDate}`)
+        .then(resp => resp.json())
+        .then(days => {
+            this.setState({days})
+        })
+    }
 
     render () {
         return (
             <div className="all-days-container">
                 <div className="all-days-container__header-items">
-                    <div className="all-days-container__header">PLACEHOLDER FOR MONTH</div>
+                    <div className="all-days-container__header">{`${dayjs(this.state.month).format("MMMM")} - ${this.state.year}`.toUpperCase()}</div>
                     <div className="all-days-container__filters">
-                        <label className="all-days-container__label">select month</label>
-                        <select className="all-days-container__filter" defaultValue="" onChange={this.handleInputUpdate}>
-                            <option disabled={true} value={this.state.month}>-select month-</option>
-                            <option value="November">November</option>
-                            <option value="December">December</option>
-                        </select>
-                        <label className="all-days-container__label">select year</label>
-                        <select className="all-days-container__filter" defaultValue="" onChange={this.handleInputUpdate}>
-                            <option disabled={true} value={this.state.year}>-select year-</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                        </select>
+                        <form className="all-days-container___form" onSubmit={this.filterDays}>
+                            <label className="all-days-container__label">select month</label>
+                            <select className="all-days-container__filter" name="month" value={this.state.month} onChange={this.handleInputUpdate}>
+                                <option disabled value="">-select month-</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                            <label className="all-days-container__label">select year</label>
+                            <select className="all-days-container__filter" name="year" value={this.state.year} onChange={this.handleInputUpdate}>
+                                <option disabled value="">-select year-</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                            </select>
+                            <button className="all-days-container__button" type="submit">apply filter</button>
+                        </form>
                     </div>
                 </div>
                 <ul className="all-days-container__day-cards-list">
-                    <li><DayCard /></li>
-                    <li><DayCard /></li>
-                    <li><DayCard /></li>
-                    <li><DayCard /></li>
-                    <li><DayCard /></li>
-                    <li><DayCard /></li>
+                    {this.state.days.map(day => <li key={day.id}><DayCard day={day} /></li> )}
                 </ul>
             </div>
         );
@@ -51,4 +97,8 @@ class AllDaysContainer extends React.Component{
 
 }
 
-export default AllDaysContainer;
+const mapStateToProps = (state) => {
+    return {userId: state.user.id}
+}
+
+export default connect(mapStateToProps)(AllDaysContainer);

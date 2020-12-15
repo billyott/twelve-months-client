@@ -6,11 +6,6 @@ import './habit-card.scss';
 function HabitCard(props) {
 
     const localHandleUpdateHabit = () => {
-        // console.log({
-        //     id: props.habit.id,
-        //     user_id: props.userId,
-        //     archived: props.habit.archived ? false : true 
-        // })
         props.handleUpdateHabit({
             id: props.habit.id,
             user_id: props.userId,

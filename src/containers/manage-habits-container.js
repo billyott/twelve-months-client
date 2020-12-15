@@ -48,7 +48,6 @@ class ManageHabitsContainer extends React.Component{
         })
         .then(resp => resp.json())
         .then(updatedHabit => {
-            console.log(updatedHabit)
             this.props.handleAddHabitViaUpdateUser(updatedHabit.user.id)
         })
     }
