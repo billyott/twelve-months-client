@@ -63,7 +63,34 @@ class TrendContainer extends React.Component{
             {id: "Sleep Hours", "color": "hsl(203, 70%, 50%)", data: []}
         ]
         if (this.state.aggregation === 'week') {
-
+            const weekData = {}
+            let currentWeek = 1
+            let counter = 1
+            rawData.forEach(datum => {
+                if (!weekData[`wk${currentWeek}`]) {
+                    weekData[`wk${currentWeek}`] = {moodScore: 0, moodCount: 0, sleepHours: 0, sleepCount: 0}
+                }
+                if (isNumber(datum.mood_score)) {
+                    weekData[`wk${currentWeek}`].moodScore += datum.mood_score
+                    weekData[`wk${currentWeek}`].moodCount += 1
+                }
+                if (isNumber(datum.sleep_hours)) {
+                    weekData[`wk${currentWeek}`].sleepHours += datum.sleep_hours
+                    weekData[`wk${currentWeek}`].sleepCount += 1
+                }
+                if (counter === 7) {
+                    currentWeek++
+                    counter = 1
+                } else {
+                    counter++
+                }
+            })
+            Object.keys(weekData).forEach(week => {
+                const moodDataPoint = {x: week, y: weekData[week].moodCount ? weekData[week].moodScore/weekData[week].moodCount : null}
+                const sleepDataPoint = {x: week, y: weekData[week].sleepCount ? weekData[week].sleepHours/weekData[week].sleepCount : null}
+                data[0].data.push(moodDataPoint)
+                data[1].data.push(sleepDataPoint)
+            })
         } else if (this.state.aggregation === 'month') {
             const monthData = {}
             rawData.forEach(datum => {
