@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
+import { isNumber } from 'lodash';
 
 import LineGraph from '../components/line-graph';
 
@@ -13,7 +14,7 @@ class TrendContainer extends React.Component{
     state = {
         startDate: Date.parse('2020/11/01'),
         endDate: new Date(),
-        days: [],
+        aggregation: 'day',
         data: []
     };
 
@@ -23,20 +24,20 @@ class TrendContainer extends React.Component{
 
     getInitialStartAndEndDates = () => {
         const now = dayjs()
+        const day = now.format("D")
         const month = dayjs(now).month()+1
         const year = dayjs(now).year()
         const startDate = `${year}-${month}-01`
-        const endDate = `${year}-${month}-${dayjs(startDate).daysInMonth()}`
+        const endDate = `${year}-${month}-${day}`
         this.setState({
             startDate: Date.parse(`${year}/${month}/01`),
-            endDate: Date.parse(`${year}/${month}/${dayjs(startDate).daysInMonth()}`)
+            endDate: Date.parse(`${year}/${month}/${day}`)
         })
         fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${startDate}&end_date=${endDate}`)
         .then(resp => resp.json())
         .then(days => {
             const data = this.stageData(days)
             this.setState({
-                days: days,
                 data: {data}
             })
         })
@@ -44,12 +45,13 @@ class TrendContainer extends React.Component{
 
     filterDays = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${this.state.startDate}&end_date=${this.state.endDate}`)
+        const startDate = dayjs(this.state.startDate).format('YYYY-MM-DD')
+        const endDate = dayjs(this.state.endDate).format('YYYY-MM-DD')
+        fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${startDate}&end_date=${endDate}`)
         .then(resp => resp.json())
         .then(days => {
             const data = this.stageData(days)
             this.setState({
-                days: days,
                 data: {data}
             })
         })
@@ -60,14 +62,62 @@ class TrendContainer extends React.Component{
             {id: "Mood Score", "color": "hsl(257, 70%, 50%)", data: []},
             {id: "Sleep Hours", "color": "hsl(203, 70%, 50%)", data: []}
         ]
-        rawData.forEach(datum => {
-            const moodDataPoint = {"x": datum.date, "y": datum.mood_score}
-            const sleepDataPoint = {"x": datum.date, "y": datum.sleep_hours}
-            data[0].data.push(moodDataPoint)
-            data[1].data.push(sleepDataPoint)
-        })
+        if (this.state.aggregation === 'week') {
+
+        } else if (this.state.aggregation === 'month') {
+            const monthData = {}
+            rawData.forEach(datum => {
+                const month = dayjs(datum.date).format("MMM")
+                if (!monthData[month]) {
+                    monthData[month] = {moodScore: 0, moodCount: 0, sleepHours: 0, sleepCount: 0}
+                }
+                if (isNumber(datum.mood_score)) {
+                    monthData[month].moodScore += datum.mood_score
+                    monthData[month].moodCount += 1
+                }
+                if (isNumber(datum.sleep_hours)) {
+                    monthData[month].sleepHours += datum.sleep_hours
+                    monthData[month].sleepCount += 1
+                }
+            })
+            Object.keys(monthData).forEach(month => {
+                const moodDataPoint = {x: month, y: monthData[month].moodCount ? monthData[month].moodScore/monthData[month].moodCount : null}
+                const sleepDataPoint = {x: month, y: monthData[month].sleepCount ? monthData[month].sleepHours/monthData[month].sleepCount : null}
+                data[0].data.push(moodDataPoint)
+                data[1].data.push(sleepDataPoint)
+            })
+        } else if (this.state.aggregation === 'year') {
+            const yearData = {}
+            rawData.forEach(datum => {
+                const year = dayjs(datum.date).format("YYYY")
+                if (!yearData[year]) {
+                    yearData[year] = {moodScore: 0, moodCount: 0, sleepHours: 0, sleepCount: 0}
+                }
+                if (isNumber(datum.mood_score)) {
+                    yearData[year].moodScore += datum.mood_score
+                    yearData[year].moodCount += 1
+                }
+                if (isNumber(datum.sleep_hours)) {
+                    yearData[year].sleepHours += datum.sleep_hours
+                    yearData[year].sleepCount += 1
+                }
+            })
+            Object.keys(yearData).forEach(year => {
+                const moodDataPoint = {x: year, y: yearData[year].moodCount ? yearData[year].moodScore/yearData[year].moodCount : null}
+                const sleepDataPoint = {x: year, y: yearData[year].sleepCount ? yearData[year].sleepHours/yearData[year].sleepCount : null}
+                data[0].data.push(moodDataPoint)
+                data[1].data.push(sleepDataPoint)
+            })
+        } else {
+            rawData.forEach(datum => {
+                const moodDataPoint = {x: datum.date, y: datum.mood_score}
+                const sleepDataPoint = {x: datum.date, y: datum.sleep_hours}
+                data[0].data.push(moodDataPoint)
+                data[1].data.push(sleepDataPoint)
+            })
+        }
         return data
-    } 
+    }
 
 
     render() {
@@ -80,32 +130,15 @@ class TrendContainer extends React.Component{
                         <DatePicker selected={this.state.startDate} onChange={date => this.setState({startDate: date})}/>
                         <label className="trend-container-container__label">end date</label>
                         <DatePicker selected={this.state.endDate} onChange={date => this.setState({endDate: date})}/>
+                        <label className="trend-container-container__label">aggregation type</label>
+                            <select className="trend-container-container__filter" name="aggreation" value={this.state.aggregation} onChange={e => this.setState({aggregation: e.target.value})}>
+                                <option disabled value="">-select agg-</option>
+                                <option value="day">day</option>
+                                <option value="week">week</option>
+                                <option value="month">month</option>
+                                <option value="year">year</option>
+                            </select>
                         <button className="trend-container-container__button" onClick={this.filterDays}>update date filters</button>
-                        {/* <form className="trend-container-container___form" onSubmit={this.filterDays}>
-                            <label className="trend-container-container__label">select month</label>
-                            <select className="trend-container-container__filter" name="month" value={this.state.month} onChange={this.handleInputUpdate}>
-                                <option disabled value="">-select month-</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                            <label className="trend-container-container__label">select year</label>
-                            <select className="trend-container-container__filter" name="year" value={this.state.year} onChange={this.handleInputUpdate}>
-                                <option disabled value="">-select year-</option>
-                                <option value="2020">2020</option>
-                                <option value="2021">2021</option>
-                            </select>
-                            <button className="trend-container-container__button" type="submit">apply filter</button>
-                        </form> */}
                     </div>
                 </div>
                 <div className="trend-container__graph-container">
