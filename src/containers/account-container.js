@@ -4,6 +4,9 @@ import EditUserForm from '../components/edit-user-form'
 
 class AccountContainer extends React.Component {
 
+    state = {
+        showEditUserForm: false
+    }
 
     render() {
         return (
