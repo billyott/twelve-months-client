@@ -15,7 +15,7 @@ function Header(props) {
     return (
         <header className="header">
             <h1 className="header__header">12MONTHS</h1>
-            <p>hi {props.username}</p>
+            {/* <p>hi {props.username}</p> */}
             <button className="header__button" onClick={handleLogout}>log out</button>
         </header>
     );

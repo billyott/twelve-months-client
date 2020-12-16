@@ -1,5 +1,9 @@
 @import 'react-datepicker/dist/react-datepicker.css';
 
+html, body {
+  font-family: 'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .App {
-  height: 80vh;
+  height: 600px;
 }

@@ -17,7 +17,7 @@ function App(props) {
     return (
         <div className="App">
             <BrowserRouter>
-                <Header />
+                {!!props.user.id ? <Header /> : null}
                 {!!props.user.id ? <NavBar /> : null}
                 <Switch>
                     <Route path="/login">

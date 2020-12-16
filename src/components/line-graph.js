@@ -4,6 +4,7 @@ import './line-graph.scss';
 
 const LineGraph = ({ data = []}) => (
     <ResponsiveLine
+        colors={config => config.color}
         data={data}
         margin={{ top: 50, right: 100, bottom: 150, left: 100 }}
         xScale={{ type: 'point' }}
