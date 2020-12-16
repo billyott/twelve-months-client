@@ -1,0 +1,25 @@
+.homepage-container {
+    display: block;
+
+
+    &__top, &__bottom {
+        display: block;
+    }
+
+    &__header {
+        text-align: center;
+        display: block;
+        font-size: 1.5rem;
+    }
+
+    &__link {
+        text-align: center;
+        display: block;
+    }
+
+    &__day-cards-list {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+}

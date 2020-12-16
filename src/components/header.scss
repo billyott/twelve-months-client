@@ -2,7 +2,7 @@
 
 
 .header {
-    height: 80px;
+    height: 10vh;
     background-color: $scheme-blue-dark;
     position: relative;
 
@@ -31,14 +31,6 @@
         font-size: 1rem;
         margin-top: auto;
         margin-bottom: auto;
-
-
     }
-
-    // &__sub-header {
-    //     display: block;
-    //     margin-top: 10px;
-    // }
-
 
 }

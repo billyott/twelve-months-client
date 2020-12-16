@@ -12,6 +12,36 @@ import TrendContainer from './containers/trend-container';
 import AccountContainer from './containers/account-container';
 import './App.css';
 
+function AuthContainer() {
+    return(
+        <div className="main-container">
+            <NavBar />
+            <div className="content-container">
+            <Switch >
+                <Route path="/days/:date">
+                    <DayDetailsContainer />
+                </Route>
+                <Route path="/days">
+                    <AllDaysContainer />
+                </Route>
+                <Route path="/habits">
+                    <ManageHabitsContainer />
+                </Route>
+                <Route path="/trends">
+                    <TrendContainer />
+                </Route>
+                <Route path="/my-account">
+                    <AccountContainer />
+                </Route>
+                <Route path="/">
+                    <HomepageContainer />
+                </Route>
+            </Switch>
+            </div>
+        </div>
+    )
+}
+
 function App(props) {
 
     return (
@@ -22,29 +52,9 @@ function App(props) {
                     <Route path="/login">
                         {!!props.user.id ? <Redirect to="/"/> : <LoginContainer />}
                     </Route>
-                    <div className="main-container">
-                        {!!props.user.id ? <NavBar /> : null}
-                        <div className="content-container">
-                            <Route path="/days/:date">
-                                {!!props.user.id ? <DayDetailsContainer /> : <Redirect to="/login"/>}
-                            </Route>
-                            <Route path="/days">
-                                {!!props.user.id ? <AllDaysContainer /> : <Redirect to="/login"/>}
-                            </Route>
-                            <Route path="/habits">
-                                {!!props.user.id ? <ManageHabitsContainer /> : <Redirect to="/login"/>}
-                            </Route>
-                            <Route path="/trends">
-                                {!!props.user.id ? <TrendContainer /> : <Redirect to="/login"/>}
-                            </Route>
-                            <Route path="/my-account">
-                                {!!props.user.id ? <AccountContainer /> : <Redirect to="/login"/>}
-                            </Route>
-                            <Route path="/">
-                                {!!props.user.id ? <HomepageContainer /> : <Redirect to="/login"/>}
-                            </Route>
-                        </div>
-                    </div>
+                    <Route path="/">
+                        {!!props.user.id ? <AuthContainer /> : <Redirect to="/login"/>}
+                    </Route>
                 </Switch>
             </BrowserRouter>
         </div>

@@ -1,0 +1,31 @@
+@import '../styling-vars';
+
+
+
+.day-details-card {
+    display: flex;
+    margin: 20px 60px;
+
+    &__left-container {
+        width: 65%;
+        background-color: $scheme-blue-light;
+    }
+
+    &__right-container {
+        flex-grow: 1;
+        display: inline-block;
+    }
+
+
+
+    &__habits {
+        background-color: $scheme-yellow;
+    }
+
+    &__mood-sleep {
+        background-color: $scheme-coral;
+    }
+
+
+
+}
