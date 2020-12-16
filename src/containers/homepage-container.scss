@@ -1,19 +1,30 @@
 .homepage-container {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
+    &__top {
+        height: 65%;
+        display: flex;
+        flex-direction: column;
+    }
 
-    &__top, &__bottom {
+    &__bottom {
+        flex-grow: 1;
         display: block;
     }
 
     &__header {
-        text-align: center;
         display: block;
+        height: 5%;
+        margin: 10px 0;
+        text-align: center;
         font-size: 1.5rem;
     }
 
     &__link {
         text-align: center;
+        margin: 15px 0;
         display: block;
     }
 

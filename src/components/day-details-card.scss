@@ -4,28 +4,54 @@
 
 .day-details-card {
     display: flex;
-    margin: 20px 60px;
+    flex-grow: 1;
+    margin: 0 60px;
 
     &__left-container {
         width: 65%;
         background-color: $scheme-blue-light;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__notes-list {
+        flex-grow: 1;
     }
 
     &__right-container {
         flex-grow: 1;
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
     }
 
-
+    &__header {
+        &--date {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        &--habits,&--mood-sleep {
+            font-size: 1.2rem;
+            margin-left: 10px;
+            padding-top: 10px;
+        }
+    }
+    
 
     &__habits {
+        height: 50%;
         background-color: $scheme-yellow;
     }
 
     &__mood-sleep {
+        flex-grow: 1;
         background-color: $scheme-coral;
     }
 
-
+    &__notes-list-item {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
 
 }
