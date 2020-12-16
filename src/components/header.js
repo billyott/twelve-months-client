@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { logUserOut } from '../redux/actions';
 import './header.scss';
@@ -14,9 +15,12 @@ function Header(props) {
 
     return (
         <header className="header">
-            <h1 className="header__header">12MONTHS</h1>
-            {/* <p>hi {props.username}</p> */}
-            <button className="header__button" onClick={handleLogout}>log out</button>
+            <Link className="header__header" to={`/`}>12MONTHS</Link>
+            {/* <div className="header__header">
+                12MONTHS
+            </div> */}
+            <button className="header__button" onClick={handleLogout}>LOG OUT</button>
+            {/* <div className="header__sub-header">Hello, {props.username}!</div> */}
         </header>
     );
 

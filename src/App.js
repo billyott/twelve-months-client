@@ -18,12 +18,13 @@ function App(props) {
         <div className="app">
             <BrowserRouter>
                 {!!props.user.id ? <Header /> : null}
-                {!!props.user.id ? <NavBar /> : null}
-                    <Switch>
-                        <Route path="/login">
-                            {!!props.user.id ? <Redirect to="/"/> : <LoginContainer />}
-                        </Route>
-                        <div className="main-container">
+                <Switch>
+                    <Route path="/login">
+                        {!!props.user.id ? <Redirect to="/"/> : <LoginContainer />}
+                    </Route>
+                    <div className="main-container">
+                        {!!props.user.id ? <NavBar /> : null}
+                        <div className="content-container">
                             <Route path="/days/:date">
                                 {!!props.user.id ? <DayDetailsContainer /> : <Redirect to="/login"/>}
                             </Route>
@@ -43,7 +44,8 @@ function App(props) {
                                 {!!props.user.id ? <HomepageContainer /> : <Redirect to="/login"/>}
                             </Route>
                         </div>
-                    </Switch>
+                    </div>
+                </Switch>
             </BrowserRouter>
         </div>
     );

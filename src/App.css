@@ -9,6 +9,11 @@ html, body {
 }
 
 .main-container {
-  border-style: solid;
-  border-width: 1px;
+  display: flex;
+}
+
+.content-container {
+  flex-grow: 1;
+  margin-left: 50px;
+  padding-top: 50px;
 }

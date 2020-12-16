@@ -5,7 +5,8 @@
     background-color: $scheme-grey-light;
 
     &__hamburger {
-
+        position: absolute;
+        left: 10;
     }
 
     &__hamburger-line {
@@ -16,6 +17,13 @@
     }
 
     &__links-container {
-        
+        position: relative;
+        margin-top: 40px;
+    }
+
+    &__link {
+        position: relative;
+        display: block;
+        margin: 20px 35px 0 15px;
     }
 }
