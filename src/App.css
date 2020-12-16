@@ -4,6 +4,11 @@ html, body {
   font-family: 'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.App {
+.app {
   height: 600px;
+}
+
+.main-container {
+  border-style: solid;
+  border-width: 1px;
 }

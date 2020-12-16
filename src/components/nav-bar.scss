@@ -1,0 +1,21 @@
+@import '../styling-vars';
+
+
+.nav-bar {
+    background-color: $scheme-grey-light;
+
+    &__hamburger {
+
+    }
+
+    &__hamburger-line {
+        background-color: black;
+        height: 4px;
+        width: 30px;
+        margin: 5px;
+    }
+
+    &__links-container {
+        
+    }
+}

@@ -1,5 +1,5 @@
 .login-form {
-    height: 40%;
+    height: 38%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -13,6 +13,10 @@
 
     &__label {
         margin-top: 5px;
+    }
+
+    &__input {
+        width: 50%;
     }
 
     &__button {

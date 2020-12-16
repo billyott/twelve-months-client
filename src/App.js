@@ -15,33 +15,35 @@ import './App.css';
 function App(props) {
 
     return (
-        <div className="App">
+        <div className="app">
             <BrowserRouter>
                 {!!props.user.id ? <Header /> : null}
                 {!!props.user.id ? <NavBar /> : null}
-                <Switch>
-                    <Route path="/login">
-                        {!!props.user.id ? <Redirect to="/"/> : <LoginContainer />}
-                    </Route>
-                    <Route path="/days/:date">
-                        {!!props.user.id ? <DayDetailsContainer /> : <Redirect to="/login"/>}
-                    </Route>
-                    <Route path="/days">
-                        {!!props.user.id ? <AllDaysContainer /> : <Redirect to="/login"/>}
-                    </Route>
-                    <Route path="/habits">
-                        {!!props.user.id ? <ManageHabitsContainer /> : <Redirect to="/login"/>}
-                    </Route>
-                    <Route path="/trends">
-                        {!!props.user.id ? <TrendContainer /> : <Redirect to="/login"/>}
-                    </Route>
-                    <Route path="/my-account">
-                        {!!props.user.id ? <AccountContainer /> : <Redirect to="/login"/>}
-                    </Route>
-                    <Route path="/">
-                        {!!props.user.id ? <HomepageContainer /> : <Redirect to="/login"/>}
-                    </Route>
-                </Switch>
+                    <Switch>
+                        <Route path="/login">
+                            {!!props.user.id ? <Redirect to="/"/> : <LoginContainer />}
+                        </Route>
+                        <div className="main-container">
+                            <Route path="/days/:date">
+                                {!!props.user.id ? <DayDetailsContainer /> : <Redirect to="/login"/>}
+                            </Route>
+                            <Route path="/days">
+                                {!!props.user.id ? <AllDaysContainer /> : <Redirect to="/login"/>}
+                            </Route>
+                            <Route path="/habits">
+                                {!!props.user.id ? <ManageHabitsContainer /> : <Redirect to="/login"/>}
+                            </Route>
+                            <Route path="/trends">
+                                {!!props.user.id ? <TrendContainer /> : <Redirect to="/login"/>}
+                            </Route>
+                            <Route path="/my-account">
+                                {!!props.user.id ? <AccountContainer /> : <Redirect to="/login"/>}
+                            </Route>
+                            <Route path="/">
+                                {!!props.user.id ? <HomepageContainer /> : <Redirect to="/login"/>}
+                            </Route>
+                        </div>
+                    </Switch>
             </BrowserRouter>
         </div>
     );

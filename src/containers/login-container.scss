@@ -12,6 +12,8 @@
 
 // }
 
+@import '../styling-vars';
+
 
 .login-container {
     display: flex;
@@ -24,12 +26,12 @@
 
     &__left {
         width: 60%;
-        background-color: #90ccf4;
+        background-color: $scheme-blue-light;
     }
 
     &__right {
         width: 40%;
-        background-color: #ececec;
+        background-color: $scheme-grey-light;
     }
 
     &__form-container {

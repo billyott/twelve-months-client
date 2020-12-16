@@ -37,7 +37,7 @@ class NewUserForm extends React.Component {
                 <input className="new-user-form__input" name="username" placeholder="enter username" value={this.state.username} onChange={this.handleInputUpdate}></input>
                 <label className="new-user-form__label">password</label>
                 <input className="new-user-form__input" name="password" placeholder="enter password" value={this.state.password} onChange={this.handleInputUpdate} type="password"></input>
-                <button className="new-user-form__button">Submit</button>
+                <button className="new-user-form__button" type="submit">Create Account</button>
             </form>
         );
     }
