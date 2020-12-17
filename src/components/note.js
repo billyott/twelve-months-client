@@ -49,9 +49,9 @@ class Note extends React.Component {
             <div className="note">
                 <div className="note__content">
                     {this.state.showEditNoteForm ? <EditNoteForm note={this.state.note} dayId={this.props.dayId} handleShowEditNoteForm={this.handleShowEditNoteForm} handleUpdateNote={this.handleUpdateNote} /> : null}
+                    {this.state.showEditNoteForm ? <button className="note__button" onClick={this.localHandleDeleteNote}>delete</button>: null}
                     {this.state.showEditNoteForm ? null : <div onClick={this.handleShowEditNoteForm}>{this.state.note.note_type === "Event" ? "△" : "-"} {this.state.note.note}</div>}
                 </div>
-                <button className="note__button" onClick={this.localHandleDeleteNote}>delete</button>
             </div>
         );
     }

@@ -24,13 +24,13 @@ class HomepageContainer extends React.Component {
             <div className="homepage-container">
                 <div className="homepage-container__top">
                     <div className="homepage-container__header">TODAY</div>
-                    <DayDetailsCard day={this.state.days[0]} /> 
+                    <DayDetailsCard day={this.state.days[3]} /> 
                 </div>
                 <div className="homepage-container__bottom">
                     <div className="homepage-container__header">LAST THREE DAYS</div>
                     <NavLink to="/days" className="homepage-container__link">see all days</NavLink>
                     <ul className="homepage-container__day-cards-list">
-                        {this.state.days.slice(1).map(day => <li key={day.id}><DayCard day={day}/></li>)}
+                        {this.state.days.slice(0,3).map(day => <li key={day.id}><DayCard day={day}/></li>)}
                     </ul>
                 </div>
             </div>

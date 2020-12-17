@@ -54,4 +54,12 @@
         padding: 0;
     }
 
+    &__button {
+        border-style: none;
+        outline: none;
+        background: none;
+        font-size: 3rem;
+        margin: 10px auto;
+    }
+
 }

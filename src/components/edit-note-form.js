@@ -38,13 +38,13 @@ class EditNoteForm extends React.Component {
         return(
             <form className="edit-note-form" onSubmit={this.localHandleEditNoteSubmit}>
                 <label className="edit-note-form__label">note</label>
-                <input className="edit-note-form__input" name="note" value={this.state.note} onChange={this.handleInputUpdate}></input>
+                <textarea className="edit-note-form__input" name="note" value={this.state.note} onChange={this.handleInputUpdate}></textarea>
                 <label className="edit-note-form__label">note type</label>
                 <select className="edit-note-form__select" name="note_type" value={this.state.note_type} onChange={this.handleInputUpdate}>
                     <option value="Thought">Thought</option> 
                     <option value="Event">Event</option>
                 </select>
-                <button className="edit-note-form__button">Submit</button>
+                <button className="edit-note-form__button" type="submit">update</button>
             </form>
         );
     }
