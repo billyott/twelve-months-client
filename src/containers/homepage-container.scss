@@ -1,23 +1,15 @@
 .homepage-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 
     &__top {
-        height: 65%;
-        display: flex;
-        flex-direction: column;
+
     }
 
     &__bottom {
-        flex-grow: 1;
-        display: block;
+
     }
 
     &__header {
-        display: block;
-        height: 5%;
-        margin: 10px 0;
+        padding: 15px 0 10px 0;
         text-align: center;
         font-size: 1.5rem;
     }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './nav-bar.scss';
 
@@ -26,11 +27,12 @@ class NavBar extends React.Component {
                 </div>
                 {this.state.menuOpen ? 
                 <div className="nav-bar__links-container">
-                    <NavLink to="/" className="nav-bar__link">HOME</NavLink>
-                    <NavLink to="/days" className="nav-bar__link">ALL DAYS</NavLink>
-                    <NavLink to="/habits" className="nav-bar__link">MANAGE HABITS</NavLink>
-                    <NavLink to="/trends" className="nav-bar__link">MY TRENDS</NavLink>
-                    <NavLink to="/my-account" className="nav-bar__link">MY ACCOUNT</NavLink>
+                    <div className="header__sub-header">Hello, {this.props.user.username}!</div>
+                    <NavLink to="/" className="nav-bar__link" onClick={this.handleToggleMenu}>HOME</NavLink>
+                    <NavLink to="/days" className="nav-bar__link" onClick={this.handleToggleMenu}>ALL DAYS</NavLink>
+                    <NavLink to="/habits" className="nav-bar__link" onClick={this.handleToggleMenu}>MANAGE HABITS</NavLink>
+                    <NavLink to="/trends" className="nav-bar__link" onClick={this.handleToggleMenu}>MY TRENDS</NavLink>
+                    <NavLink to="/my-account" className="nav-bar__link" onClick={this.handleToggleMenu}>MY ACCOUNT</NavLink>
                 </div>
                 :
                 null}
@@ -42,4 +44,8 @@ class NavBar extends React.Component {
 
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+    return {user: state.user}
+}
+
+export default connect(mapStateToProps)(NavBar);

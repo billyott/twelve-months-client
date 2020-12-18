@@ -1,0 +1,19 @@
+.new-note-form {
+    
+
+    &__label-container {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 5px;
+    }
+
+    &__select {
+        margin-left: 5px;
+    }
+
+    &__textarea {
+        width: 100%;
+        height: 200px;
+        resize: none;
+    }
+}

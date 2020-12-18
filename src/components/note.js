@@ -40,17 +40,11 @@ class Note extends React.Component {
         })
     }
 
-    localHandleDeleteNote = () => {
-        this.props.handleDeleteNote(this.props.note.id)
-    }
-
     render(){
         return(
             <div className="note">
-                <div className="note__content">
-                    {this.state.showEditNoteForm ? <EditNoteForm note={this.state.note} dayId={this.props.dayId} handleShowEditNoteForm={this.handleShowEditNoteForm} handleUpdateNote={this.handleUpdateNote} /> : null}
-                    {this.state.showEditNoteForm ? <button className="note__button" onClick={this.localHandleDeleteNote}>delete</button>: null}
-                    {this.state.showEditNoteForm ? null : <div onClick={this.handleShowEditNoteForm}>{this.state.note.note_type === "Event" ? "△" : "-"} {this.state.note.note}</div>}
+                <div className="note__content-container">
+                    {this.state.showEditNoteForm ? <EditNoteForm note={this.state.note} dayId={this.props.dayId} handleShowEditNoteForm={this.handleShowEditNoteForm} handleUpdateNote={this.handleUpdateNote} handleDeleteNote={this.props.handleDeleteNote} /> : null}                    {this.state.showEditNoteForm ? null : <div className="note__content" onClick={this.handleShowEditNoteForm}>{this.state.note.note_type === "Event" ? "△" : "-"} {this.state.note.note}</div>}
                 </div>
             </div>
         );

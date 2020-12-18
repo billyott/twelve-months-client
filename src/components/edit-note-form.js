@@ -34,17 +34,26 @@ class EditNoteForm extends React.Component {
         }
     }
 
+    localHandleDeleteNote = () => {
+        this.props.handleDeleteNote(this.props.note.id)
+    }
+
     render(){
         return(
             <form className="edit-note-form" onSubmit={this.localHandleEditNoteSubmit}>
-                <label className="edit-note-form__label">note</label>
-                <textarea className="edit-note-form__input" name="note" value={this.state.note} onChange={this.handleInputUpdate}></textarea>
-                <label className="edit-note-form__label">note type</label>
-                <select className="edit-note-form__select" name="note_type" value={this.state.note_type} onChange={this.handleInputUpdate}>
-                    <option value="Thought">Thought</option> 
-                    <option value="Event">Event</option>
-                </select>
-                <button className="edit-note-form__button" type="submit">update</button>
+                <div className="edit-note-form__label-container">
+                    <label className="edit-note-form__label">edit entry</label>
+                    <div className="edit-note-form__note-type-container">
+                        <label className="edit-note-form__label">note type</label>
+                        <select className="edit-note-form__select" name="note_type" value={this.state.note_type} onChange={this.handleInputUpdate}>
+                            <option value="Thought">Thought</option> 
+                            <option value="Event">Event</option>
+                        </select>
+                    </div>
+                    <button className="edit-note-form__button" type="submit">update</button>
+                    <button className="edit-note-form__button" onClick={this.localHandleDeleteNote}>delete</button>
+                </div>
+                <textarea className="edit-note-form__textarea" name="note" value={this.state.note} onChange={this.handleInputUpdate}></textarea>
             </form>
         );
     }

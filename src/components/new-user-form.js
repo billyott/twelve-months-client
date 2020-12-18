@@ -30,7 +30,7 @@ class NewUserForm extends React.Component {
                 <div className="new-user-form__text">
                     ...or if you're new here...
                 </div>
-                <div className="new-user-form__header">SIGN IN</div>
+                <div className="new-user-form__header">SIGN UP</div>
                 <label className="new-user-form__label">email</label>
                 <input className="new-user-form__input" name="email" placeholder="enter email" value={this.state.email} onChange={this.handleInputUpdate}></input>
                 <label className="new-user-form__label">username</label>

@@ -3,7 +3,8 @@
 
 .nav-bar {
     background-color: $scheme-grey-light;
-    height: 90vh;
+    position: absolute;
+    height: 100vh;
 
     &__hamburger {
         position: absolute;
