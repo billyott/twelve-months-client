@@ -3,41 +3,63 @@
 
 
 .day-details-card {
+    display: flex;
     padding: 0 60px;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    display: flex;
-    flex-grow: 1;
     height: 450px;
     max-height: 450px;
+    position: relative;
 
     &__left-container {
-        padding: 0 20px 0 15px;
+        padding: 0 20px 60px;
         width: 65%;
         background-color: $scheme-blue-light;
-        justify-content: center;
-        overflow-y: auto;
-        max-height: 550px;
+        position: relative;
     }
 
     &__notes-list {
-        flex-grow: 1;
-        padding: 0;
+        max-height: 340px;
+        padding-left: 0;
         margin:0;
+        overflow: auto;
+    }
+
+    &__header-list-container {
+        height: 100%;
+        padding-bottom: 300px;
     }
 
     &__right-container {
-        flex-grow: 1;
         display: flex;
         flex-direction: column;
+        width: 35%;
     }
+
+    &__habits {
+        position: relative;
+    }
+
+    &__habits-list {
+
+    }
+
+    &__link {
+        position: absolute;
+        left: 50%;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 
     &__header {
         &--date {
             font-size: 1.5rem;
             margin-top: 10px;
-            margin-left: 20px;
+            margin-left: 5px;
+            margin-bottom: 10px;
         }
         &--habits,&--mood-sleep {
             font-size: 1.2rem;
@@ -50,6 +72,7 @@
     &__habits {
         height: 50%;
         background-color: $scheme-yellow;
+        position: relative;
     }
 
     &__mood-sleep {
@@ -64,11 +87,16 @@
     }
 
     &__button {
+        display: block;
         border-style: none;
         outline: none;
         background: none;
         font-size: 3rem;
-        margin: 10px auto;
+        margin: 0 auto;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
 
 }

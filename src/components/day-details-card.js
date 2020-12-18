@@ -118,8 +118,8 @@ class DayDetailsCard extends React.Component {
             <div className="day-details-card">
                 <div className="day-details-card__left-container">
                     <div className="day-details-card__header day-details-card__header--date">{dayjs(this.props?.day?.date).format('ddd MM.DD.YY').toUpperCase()}</div>
-                    {this.state.showAddNoteForm ? <NewNoteForm dayId={this.props.day.id} handleCreateNoteSubmit={this.handleCreateNoteSubmit}/> : null}
                     <ul className="day-details-card__notes-list">
+                        {this.state.showAddNoteForm ? <NewNoteForm dayId={this.props.day.id} handleCreateNoteSubmit={this.handleCreateNoteSubmit}/> : null}
                         {this.state?.notes?.map(note => <li className="day-details-card__notes-list-item"key={note.id}><Note note={note} dayId={this.props.day.id} handleDeleteNote={this.handleDeleteNote}/></li>)}
                     </ul>
                     <button className="day-details-card__button" onClick={this.handleShowNewNoteForm}>+</button>

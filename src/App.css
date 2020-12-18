@@ -13,5 +13,9 @@ html, body {
 }
 
 .content-container {
-  
+
+}
+
+* {
+  box-sizing: border-box;
 }
