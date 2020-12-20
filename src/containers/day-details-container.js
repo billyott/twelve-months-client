@@ -35,9 +35,12 @@ class DayDetailsContainer extends React.Component{
     render() {
         return (
             <div className="day-details-container">
+                <div className="day-details-container__header">DAY DETAILS</div>
                 <DayDetailsCard day={this.state.day} />
-                <Link className="day-details-container__link" to={`/days/${dayjs(this.state.day.date).add(1, 'day').format('YYYY-MM-DD')}`}>Next Day</Link>
-                <Link className="day-details-container__link" to={`/days/${dayjs(this.state.day.date).subtract(1, 'day').format('YYYY-MM-DD')}`}>Previous Day</Link>
+                <div className="day-details-container__link-container">
+                    <Link className="day-details-container__link" to={`/days/${dayjs(this.state.day.date).subtract(1, 'day').format('YYYY-MM-DD')}`}>previous day</Link>
+                    <Link className="day-details-container__link" to={`/days/${dayjs(this.state.day.date).add(1, 'day').format('YYYY-MM-DD')}`}>next day</Link>
+                </div>
             </div>
         );
     }
