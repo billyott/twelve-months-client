@@ -12,6 +12,21 @@
     max-height: 450px;
     position: relative;
 
+    &__header {
+        &--date {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            margin-left: 5px;
+            margin-bottom: 10px;
+        }
+        &--habits,&--mood-sleep {
+            font-size: 1.2rem;
+            margin-left: 10px;
+            padding-top: 10px;
+            margin-bottom: 20px;
+        }
+    }
+
     &__left-container {
         padding: 0 20px 60px;
         width: 65%;
@@ -24,60 +39,6 @@
         padding-left: 0;
         margin:0;
         overflow: auto;
-    }
-
-    &__header-list-container {
-        height: 100%;
-        padding-bottom: 300px;
-    }
-
-    &__right-container {
-        display: flex;
-        flex-direction: column;
-        width: 35%;
-    }
-
-    &__habits {
-        position: relative;
-    }
-
-    &__habits-list {
-
-    }
-
-    &__link {
-        position: absolute;
-        left: 50%;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-
-    &__header {
-        &--date {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            margin-left: 5px;
-            margin-bottom: 10px;
-        }
-        &--habits,&--mood-sleep {
-            font-size: 1.2rem;
-            margin-left: 10px;
-            padding-top: 10px;
-        }
-    }
-    
-
-    &__habits {
-        height: 50%;
-        background-color: $scheme-yellow;
-        position: relative;
-    }
-
-    &__mood-sleep {
-        flex-grow: 1;
-        background-color: $scheme-coral;
     }
 
     &__notes-list-item {
@@ -99,4 +60,84 @@
         right: 0;
     }
 
+    &__right-container {
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+    }
+
+    &__habits {
+        height: 50%;
+        background-color: $scheme-yellow;
+        position: relative;
+    }
+
+    &__habits-list {
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        max-height: 140px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: 0;
+        overflow: auto;
+        justify-content: center;
+    }
+
+    &__habits-list-item {
+        text-align: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 50%;
+    }
+
+    &__link {
+        position: absolute;
+        left: 50%;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto 7px;
+        text-align: center;
+    }
+
+    &__mood-sleep {
+        background-color: $scheme-coral;
+        flex-grow: 1;
+    }
+
+    &__mood-rating-widget, &__sleep-widget {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+    }
+
+    &__ms-value-container {
+        position: relative;
+        height: 80px;
+        width: 80px;
+        margin: 10px auto;
+        background: white;
+        border-radius: 50%;
+    }
+
+    &__ms-value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__ms-form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
 }
+

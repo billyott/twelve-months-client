@@ -69,7 +69,7 @@ class HabitWidget extends React.Component {
     render () {
         return (
             <div className="habit-widget">
-                <label>{this.props.habit.title}</label>
+                <label className="habit-widget__label">{this.props.habit.title}</label>
                 <input className="habit-widget__checkbox" type="checkbox" value="" checked={this.state.checked} onChange={this.toggleCheckboxChange} />
             </div>
         );

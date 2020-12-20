@@ -128,19 +128,19 @@ class DayDetailsCard extends React.Component {
                     <div className="day-details-card__habits">
                         <div className="day-details-card__header day-details-card__header--habits">my habits</div>
                         <ul className="day-details-card__habits-list">
-                            {this.props.day ? this.props.user.habits.map(habit => habit.archived ? null : <li key={habit.id}><HabitWidget habit={habit} dayId={this.props.day.id} /></li>) : null}
+                            {this.props.day ? this.props.user.habits.map(habit => habit.archived ? null : <li className="day-details-card__habits-list-item" key={habit.id}><HabitWidget habit={habit} dayId={this.props.day.id} /></li>) : null}
                         </ul> 
                         <NavLink to="/habits" className="day-details-card__link">manage habits</NavLink>
                     </div>
                     <div className="day-details-card__mood-sleep">
                         <div className="day-details-card__header day-details-card__header--mood-sleep">mood + sleep</div>
-                        <div className="mood-rating-widget">
-                            <div className="mood-rating-widget__header">mood rating</div>
-                            <div className="mood-rating-widget__value">
-                                <div onClick={this.handleShowEditMoodForm}>{this.state.showEditMoodForm ? null : this.state.mood_score ? this.state.mood_score : "not logged"}</div>
+                        <div className="day-details-card__mood-rating-widget">
+                            <div className="day-details-card__ms-header">mood rating</div>
+                            <div className="day-details-card__ms-value-container">
+                                <div className="day-details-card__ms-value" onClick={this.handleShowEditMoodForm}>{this.state.showEditMoodForm ? null : this.state.mood_score ? this.state.mood_score : "not logged"}</div>
                                 {this.state.showEditMoodForm ? 
-                                <form className="mood-rating-form" onSubmit={this.handleUpdateDay}>
-                                    <select className="mood-rating-form__select" name="mood_score" value={this.state.mood_score || ""} onChange={this.handleInputUpdate}>
+                                <form className="day-details-card__ms-form" onSubmit={this.handleUpdateDay}>
+                                    <select className="day-details-card__ms-form-select" name="mood_score" value={this.state.mood_score || ""} onChange={this.handleInputUpdate}>
                                         <option value="1">1</option> 
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -152,18 +152,18 @@ class DayDetailsCard extends React.Component {
                                         <option value="9">9</option>
                                         <option value="10">10</option>
                                     </select>
-                                    <button className="mood-rating-form__button" type="submit">Submit</button>
+                                    <button className="day-details-card__ms-form-button" type="submit">log</button>
                                 </form>
                                 : null}
                             </div>
                         </div>
-                        <div className="sleep-widget">
-                            <div className="sleep-widget__header">hours of sleep last night</div>
-                            <div className="sleep-widget__value">
-                                <div onClick={this.handleShowEditSleepForm}>{this.state.showEditSleepForm ? null : this.state.sleep_hours ? this.state.sleep_hours : "not logged"}</div>
+                        <div className="day-details-card__sleep-widget">
+                            <div className="day-details-card__ms-header">sleep hours</div>
+                            <div className="day-details-card__ms-value-container">
+                                <div className="day-details-card__ms-value" onClick={this.handleShowEditSleepForm}>{this.state.showEditSleepForm ? null : this.state.sleep_hours ? this.state.sleep_hours : "not logged"}</div>
                                 {this.state.showEditSleepForm ? 
-                                <form className="sleep-hours-form" onSubmit={this.handleUpdateDay}>
-                                    <select className="sleep-hours-form__select" name="sleep_hours" value={this.state.sleep_hours || ""} onChange={this.handleInputUpdate}>
+                                <form className="day-details-card__ms-form" onSubmit={this.handleUpdateDay}>
+                                    <select className="day-details-card__ms-form-select" name="sleep_hours" value={this.state.sleep_hours || ""} onChange={this.handleInputUpdate}>
                                         <option value="1">1</option> 
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -175,7 +175,7 @@ class DayDetailsCard extends React.Component {
                                         <option value="9">9</option>
                                         <option value="10">10</option>
                                     </select>
-                                    <button className="sleep-hours-form__button" type="submit">Submit</button>
+                                    <button className="day-details-card__ms-form-button" type="submit">log</button>
                                 </form>
                                 : null}
                             </div>

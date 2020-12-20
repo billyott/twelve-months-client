@@ -5,6 +5,7 @@
     background-color: $scheme-grey-light;
     position: absolute;
     height: 90vh;
+    z-index:1;
 
     &__hamburger {
         position: absolute;
