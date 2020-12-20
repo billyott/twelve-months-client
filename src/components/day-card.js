@@ -9,17 +9,25 @@ function DayCard(props) {
 
 
     return (
-        <Link className="day-card" to={`/days/${props?.day?.date}`}>
-            <div className="day-card__header">{dayjs(props?.day?.date).format('ddd MM.DD.YY').toUpperCase()}</div>
-            <div className="mood-rating-widget">
-                <div className="mood-rating-widget__header">mood rating</div>
-                <div className="mood-rating-widget__value">{props?.day?.mood_score ? props.day.mood_score : "not logged"}</div>
-            </div>
-            <div className="sleep-widget">
-                <div className="sleep-widget__header">hours of sleep last night</div>
-                <div className="sleep-widget__value">{props?.day?.sleep_hours ? props.day.sleep_hours : "not logged"}</div>
-            </div>
-        </Link>
+        <div className="day-card">
+            <Link className="day-card__link" to={`/days/${props?.day?.date}`}>
+                <div className="day-card__header">{dayjs(props?.day?.date).format('ddd MM.DD.YY').toUpperCase()}</div>
+                <div className="day-card__ms-container">
+                    <div className="day-card__ms-widget">
+                        <div className="day-card__ms-header">mood rating</div>
+                        <div className="day-card__ms-value-container">
+                            <div className="day-card__ms-value">{props?.day?.mood_score ? props.day.mood_score : "unlogged"}</div>
+                        </div>
+                    </div>
+                    <div className="day-card__ms-widget">
+                        <div className="day-card__ms-header">sleep hours</div>
+                        <div className="day-card__ms-value-container">
+                            <div className="day-card__ms-value">{props?.day?.sleep_hours ? props.day.sleep_hours : "unlogged"}</div>
+                        </div>
+                    </div>
+                </div>
+            </Link>
+        </div>
     );
 
 }

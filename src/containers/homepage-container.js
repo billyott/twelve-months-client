@@ -30,7 +30,7 @@ class HomepageContainer extends React.Component {
                     <div className="homepage-container__header">LAST THREE DAYS</div>
                     <NavLink to="/days" className="homepage-container__link">see all days</NavLink>
                     <ul className="homepage-container__day-cards-list">
-                        {this.state.days.slice(0,3).map(day => <li key={day.id}><DayCard day={day}/></li>)}
+                        {this.state.days.slice(0,3).map(day => <li className="homepage-container__day-card-list-item" key={day.id}><DayCard day={day}/></li>)}
                     </ul>
                 </div>
             </div>

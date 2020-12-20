@@ -1,0 +1,36 @@
+@import '../styling-vars';
+
+
+.day-card {
+    background-color: $scheme-blue-light;
+    text-align: center;
+    padding: 20px 20px ;
+    margin-bottom: 20px;
+
+    &__link {
+        text-decoration: none;
+        color: black;
+    }
+
+    &__ms-widget {
+        display: inline-block;
+        margin: 15px;
+    }
+
+    &__ms-value-container {
+        height: 70px;
+        width: 70px;
+        margin: 10px auto;
+        background: white;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    &__ms-value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+}

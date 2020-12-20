@@ -1,13 +1,5 @@
 .homepage-container {
 
-    &__top {
-
-    }
-
-    &__bottom {
-
-    }
-
     &__header {
         padding: 15px 0 10px 0;
         text-align: center;
@@ -23,6 +15,9 @@
     &__day-cards-list {
         display: flex;
         justify-content: space-evenly;
+        list-style-type: none;
+        margin: 0;
+        padding: 0; 
     }
 
 }
