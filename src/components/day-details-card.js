@@ -137,7 +137,7 @@ class DayDetailsCard extends React.Component {
                         <div className="day-details-card__mood-rating-widget">
                             <div className="day-details-card__ms-header">mood rating</div>
                             <div className="day-details-card__ms-value-container">
-                                <div className="day-details-card__ms-value" onClick={this.handleShowEditMoodForm}>{this.state.showEditMoodForm ? null : this.state.mood_score ? this.state.mood_score : "not logged"}</div>
+                                <div className="day-details-card__ms-value" onClick={this.handleShowEditMoodForm}>{this.state.showEditMoodForm ? null : this.state.mood_score ? this.state.mood_score : "unlogged"}</div>
                                 {this.state.showEditMoodForm ? 
                                 <form className="day-details-card__ms-form" onSubmit={this.handleUpdateDay}>
                                     <select className="day-details-card__ms-form-select" name="mood_score" value={this.state.mood_score || ""} onChange={this.handleInputUpdate}>
@@ -160,7 +160,7 @@ class DayDetailsCard extends React.Component {
                         <div className="day-details-card__sleep-widget">
                             <div className="day-details-card__ms-header">sleep hours</div>
                             <div className="day-details-card__ms-value-container">
-                                <div className="day-details-card__ms-value" onClick={this.handleShowEditSleepForm}>{this.state.showEditSleepForm ? null : this.state.sleep_hours ? this.state.sleep_hours : "not logged"}</div>
+                                <div className="day-details-card__ms-value" onClick={this.handleShowEditSleepForm}>{this.state.showEditSleepForm ? null : this.state.sleep_hours ? this.state.sleep_hours : "unlogged"}</div>
                                 {this.state.showEditSleepForm ? 
                                 <form className="day-details-card__ms-form" onSubmit={this.handleUpdateDay}>
                                     <select className="day-details-card__ms-form-select" name="sleep_hours" value={this.state.sleep_hours || ""} onChange={this.handleInputUpdate}>

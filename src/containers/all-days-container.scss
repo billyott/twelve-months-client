@@ -1,0 +1,33 @@
+
+
+.all-days-container {
+
+    &__header-items {
+        text-align: center;
+    }
+
+    &__header {
+        padding: 15px 0 10px 0;
+        font-size: 1.5rem;
+    }
+
+    &__label {
+        margin-right: 5px;
+    }
+
+    &__filter {
+        margin-right: 50px;
+    }
+
+    &__day-cards-list {
+        padding-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &__day-card-container {
+        margin: 0 20px;
+    }
+
+}

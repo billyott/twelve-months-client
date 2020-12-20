@@ -11,7 +11,9 @@ class AllDaysContainer extends React.Component{
     state = {
         month: '',
         year: '',
-        days: []
+        days: [],
+        headerMonth: '',
+        headerYear: ''
     };
 
     handleInputUpdate = (e) => {
@@ -23,6 +25,7 @@ class AllDaysContainer extends React.Component{
         }
     };
 
+
     componentDidMount() {
         this.getCurrentMonthAndYear()
     }
@@ -33,7 +36,9 @@ class AllDaysContainer extends React.Component{
         const year = dayjs(now).year()
         this.setState({
             month: month,
-            year: year
+            year: year,
+            headerMonth: month,
+            headerYear: year
         })
         const startDate = `${year}-${month}-01`
         const endDate = `${year}-${month}-${dayjs(startDate).daysInMonth()}`
@@ -51,7 +56,11 @@ class AllDaysContainer extends React.Component{
         fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${startDate}&end_date=${endDate}`)
         .then(resp => resp.json())
         .then(days => {
-            this.setState({days})
+            this.setState({
+                days: days,
+                headerMonth: this.state.month,
+                headerYear: this.state.year
+            })
         })
     }
 
@@ -59,7 +68,7 @@ class AllDaysContainer extends React.Component{
         return (
             <div className="all-days-container">
                 <div className="all-days-container__header-items">
-                    <div className="all-days-container__header">{`${dayjs(this.state.month).format("MMMM")} - ${this.state.year}`.toUpperCase()}</div>
+                    <div className="all-days-container__header">{`${dayjs(this.state.headerMonth).format("MMMM")} ${this.state.headerYear}`.toUpperCase()}</div>
                     <div className="all-days-container__filters">
                         <form className="all-days-container___form" onSubmit={this.filterDays}>
                             <label className="all-days-container__label">select month</label>
@@ -88,9 +97,9 @@ class AllDaysContainer extends React.Component{
                         </form>
                     </div>
                 </div>
-                <ul className="all-days-container__day-cards-list">
-                    {this.state.days.map(day => <li key={day.id}><DayCard day={day} /></li> )}
-                </ul>
+                <div className="all-days-container__day-cards-list">
+                    {this.state.days.map(day => <div className="all-days-container__day-card-container" key={day.id}><DayCard day={day} /></div>)}
+                </div>
             </div>
         );
     }
