@@ -30,7 +30,7 @@ class NavBar extends React.Component {
                     <NavLink to="/" className="nav-bar__link" onClick={this.handleToggleMenu}>HOME</NavLink>
                     <NavLink to="/days" className="nav-bar__link" onClick={this.handleToggleMenu}>ALL DAYS</NavLink>
                     <NavLink to="/habits" className="nav-bar__link" onClick={this.handleToggleMenu}>MANAGE HABITS</NavLink>
-                    <NavLink to="/trends" className="nav-bar__link" onClick={this.handleToggleMenu}>MY TRENDS</NavLink>
+                    <NavLink to="/trends" className="nav-bar__link" onClick={this.handleToggleMenu}>MOOD + SLEEP TRENDS</NavLink>
                     <NavLink to="/my-account" className="nav-bar__link" onClick={this.handleToggleMenu}>MY ACCOUNT</NavLink>
                     <div className="nav-bar__sub-header">Hello, {this.props.user.username}!</div>
                 </div>

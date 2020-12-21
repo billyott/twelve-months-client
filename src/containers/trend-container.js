@@ -151,21 +151,21 @@ class TrendContainer extends React.Component{
         return (
             <div className="trend-container">
                 <div className="trend-container__header-items">
-                    <div className="trend-container__header">Trends</div>
-                    <div className="trend-container-container__filters">
-                        <label className="trend-container-container__label">start date</label>
+                    <div className="trend-container__header">MOOD + SLEEP TRENDS</div>
+                    <div className="trend-container__filters">
+                        <label className="trend-container__label">start date</label>
                         <DatePicker selected={this.state.startDate} onChange={date => this.setState({startDate: date})}/>
-                        <label className="trend-container-container__label">end date</label>
+                        <label className="trend-container__label">end date</label>
                         <DatePicker selected={this.state.endDate} onChange={date => this.setState({endDate: date})}/>
-                        <label className="trend-container-container__label">aggregation type</label>
-                            <select className="trend-container-container__filter" name="aggreation" value={this.state.aggregation} onChange={e => this.setState({aggregation: e.target.value})}>
+                        <label className="trend-container__label">date grouping</label>
+                            <select className="trend-container__filter" name="aggreation" value={this.state.aggregation} onChange={e => this.setState({aggregation: e.target.value})}>
                                 <option disabled value="">-select agg-</option>
                                 <option value="day">day</option>
                                 <option value="week">week</option>
                                 <option value="month">month</option>
                                 <option value="year">year</option>
                             </select>
-                        <button className="trend-container-container__button" onClick={this.filterDays}>update date filters</button>
+                        <button className="trend-container__button" onClick={this.filterDays}>update date range</button>
                     </div>
                 </div>
                 <div className="trend-container__graph-container">

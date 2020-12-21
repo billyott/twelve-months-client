@@ -2,4 +2,26 @@
     &__graph-container {
         height: 600px
     }
+
+    &__header-items {
+        text-align: center;
+    }
+    
+    &__header {
+        padding: 15px 0 10px 0;
+        font-size: 1.5rem;
+    }
+
+    &__label {
+        margin-right: 5px;
+        margin-left: 20px;
+    }
+    
+    &__input {
+        margin-right: 20px;
+    }
+
+    &__button {
+        margin-left: 20px
+    }
 }
