@@ -21,12 +21,23 @@
 
     &__links-container {
         position: relative;
-        margin-top: 40px;
+        margin-top: 90px;
     }
 
     &__link {
         position: relative;
         display: block;
+        color: black;
         margin: 20px 35px 0 15px;
     }
+
+    &__sub-header {
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        font-size: .95rem;
+    }
+
+
 }

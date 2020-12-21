@@ -81,7 +81,7 @@
         padding-right: 10px;
         margin: 0;
         overflow: auto;
-        justify-content: center;
+        justify-content: space-between;
     }
 
     &__habits-list-item {
@@ -117,8 +117,8 @@
 
     &__ms-value-container {
         position: relative;
-        height: 80px;
-        width: 80px;
+        height: 90px;
+        width: 90px;
         margin: 10px auto;
         background: white;
         border-radius: 50%;

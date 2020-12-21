@@ -1,0 +1,29 @@
+@import '../styling-vars.scss';
+
+
+.habit-card {
+    background-color: $scheme-blue-light;
+    text-align: center;
+    position: relative;
+    height: 150px;
+
+    &__header {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    &__button {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+}

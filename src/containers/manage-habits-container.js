@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { updateUser } from '../redux/actions';
 import HabitCard from '../components/habit-card';
-import './all-days-container.scss';
+import './manage-habits-container.scss';
 
 
 class ManageHabitsContainer extends React.Component{
@@ -67,7 +67,7 @@ class ManageHabitsContainer extends React.Component{
         return (
             <div className="manage-habits-container">
                 <div className="manage-habits-container__header-items">
-                    <div className="manage-habits-container__header">Manage Habits</div>
+                    <div className="manage-habits-container__header">MANAGE HABITS</div>
                     <div className="manage-habits-container__filters">
                         <label className="manage-habits-container__label">select habits</label>
                         <select className="manage-habits-container__filter" name="selectedHabits" value={this.state.selectedHabits} onChange={this.handleInputUpdate}>
@@ -75,17 +75,21 @@ class ManageHabitsContainer extends React.Component{
                             <option value="all habits">all habits</option>
                             <option value="archived habits">archived habits</option>
                         </select>
+                        <form className="manage-habits-container__form" onSubmit={this.handleCreateHabit}>
+                            <input className="manage-habits-container__input" name="habitTitle" type="text" placeholder="enter new habit" value={this.state.habitTitle} onChange={this.handleInputUpdate}></input>
+                            <button className="manage-habits-container__button-submit">add habit</button>
+                        </form>
                     </div>
                 </div>
                 <ul className="manage-habits-container__habit-cards-list">
-                    {this.selectedHabits().map(habit => <li key={habit.id}><HabitCard habit={habit} userId={this.props.user.id} handleUpdateHabit={this.handleUpdateHabit} /></li>)}
+                    {this.selectedHabits().map(habit => <li className="manage-habits-container__habit-card-li" key={habit.id}><HabitCard habit={habit} userId={this.props.user.id} handleUpdateHabit={this.handleUpdateHabit} /></li>)}
                 </ul>
-                {this.state.showAddHabitForm ? 
+                {/* {this.state.showAddHabitForm ? 
                 <form className="manage-habits-container__form" onSubmit={this.handleCreateHabit}>
                     <input className="manage-habits-container__input" name="habitTitle" type="text" placeholder="enter habit" value={this.state.habitTitle} onChange={this.handleInputUpdate}></input>
-                    <button className="manage-habits-container__button">Submit</button>
+                    <button className="manage-habits-container__button-submit">add habit</button>
                 </form> : null}
-                <button className="manage-habits-container__button" onClick={this.handleShowAddHabitForm}>add habit</button>
+                <button className="manage-habits-container__button" onClick={this.handleShowAddHabitForm}>+</button> */}
             </div>
         );
     }
