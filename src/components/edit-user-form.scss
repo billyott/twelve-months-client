@@ -29,4 +29,10 @@
         transform: translate(-50%, -50%);
     }
 
+    &__account-update-message {
+        text-align: center;
+        font-size: 1.3rem;
+        color: green;
+    }
+
 }

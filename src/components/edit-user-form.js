@@ -12,7 +12,8 @@ class EditUserForm extends React.Component {
         username: '',
         currentPassword: '',
         newPassword: '',
-        confirmNewPassword: ''
+        confirmNewPassword: '',
+        showAccountUpdatedMessage: false
     };
 
     componentDidMount() {
@@ -35,12 +36,18 @@ class EditUserForm extends React.Component {
             id: this.props.user.id,
             email: this.state.email,
             username: this.state.username,
-            password: this.state.newPassword
+            password: this.state.newPassword,
         });
+        this.setState({showAccountUpdatedMessage: true})
+        setInterval(() => {
+            this.setState({showAccountUpdatedMessage: false})
+        }, 4000);
     };
 
     render(){
         return(
+            <div>
+                {this.state.showAccountUpdatedMessage ? <div className="edit-user-form__account-update-message">Account updated!</div>: null}
             <form className="edit-user-form" onSubmit={this.handleEditUser}>
                 <div className="edit-user-form__text">
                 </div>
@@ -67,6 +74,7 @@ class EditUserForm extends React.Component {
                 </div> */}
                 <button className="edit-user-form__button">update account details</button>
             </form>
+            </div>
         );
     }
 
