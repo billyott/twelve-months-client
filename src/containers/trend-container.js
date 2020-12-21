@@ -153,10 +153,14 @@ class TrendContainer extends React.Component{
                 <div className="trend-container__header-items">
                     <div className="trend-container__header">MOOD + SLEEP TRENDS</div>
                     <div className="trend-container__filters">
-                        <label className="trend-container__label">start date</label>
-                        <DatePicker selected={this.state.startDate} onChange={date => this.setState({startDate: date})}/>
-                        <label className="trend-container__label">end date</label>
-                        <DatePicker selected={this.state.endDate} onChange={date => this.setState({endDate: date})}/>
+                        <div className="trend-container__date-picker-container">
+                            <label className="trend-container__label">start date</label>
+                            <DatePicker selected={this.state.startDate} onChange={date => this.setState({startDate: date})}/>
+                        </div>
+                        <div className="trend-container__date-picker-container">
+                            <label className="trend-container__label">end date</label>
+                            <DatePicker selected={this.state.endDate} onChange={date => this.setState({endDate: date})}/>
+                        </div>
                         <label className="trend-container__label">date grouping</label>
                             <select className="trend-container__filter" name="aggreation" value={this.state.aggregation} onChange={e => this.setState({aggregation: e.target.value})}>
                                 <option disabled value="">-select agg-</option>
