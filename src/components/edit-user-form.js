@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { updateUser } from '../redux/actions';
 
 import './edit-user-form.scss';
 
@@ -17,7 +18,8 @@ class EditUserForm extends React.Component {
     componentDidMount() {
         this.setState({
             email: this.props.user.email,
-            username: this.props.user.username
+            username: this.props.user.username,
+            newPassword: this.props.user.password
         })
     }
 
@@ -27,9 +29,19 @@ class EditUserForm extends React.Component {
         });
     };
 
+    handleEditUser = (e) => {
+        e.preventDefault()
+        this.props.handleEditUser({
+            id: this.props.user.id,
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.newPassword
+        });
+    };
+
     render(){
         return(
-            <form className="edit-user-form">
+            <form className="edit-user-form" onSubmit={this.handleEditUser}>
                 <div className="edit-user-form__text">
                 </div>
                 {/* <div className="edit-user-form__header">account details</div> */}
@@ -47,11 +59,11 @@ class EditUserForm extends React.Component {
                 </div> */}
                 <div className="edit-user-form__input-container">
                     <label className="edit-user-form__label">new password</label>
-                    <input className="edit-user-form__input" name="password" placeholder="enter new password" value={this.state.newPassword} onChange={this.handleInputUpdate} type="password"></input>
+                    <input className="edit-user-form__input" name="newPassword" placeholder="enter new password" value={this.state.newPassword} onChange={this.handleInputUpdate} type="password"></input>
                 </div>
                 {/* <div className="edit-user-form__input-container">
                     <label className="edit-user-form__label">confirm new password</label>
-                    <input className="edit-user-form__input" name="password" placeholder="confirm new password" value={this.state.confirmNewPassword} onChange={this.handleInputUpdate} type="password"></input>
+                    <input className="edit-user-form__input" name="confirmNewPassword" placeholder="confirm new password" value={this.state.confirmNewPassword} onChange={this.handleInputUpdate} type="password"></input>
                 </div> */}
                 <button className="edit-user-form__button">update account details</button>
             </form>
@@ -64,4 +76,8 @@ const mapStateToProps = state => {
     return {user: state.user}
 }
 
-export default connect(mapStateToProps)(EditUserForm);
+const mapDispatchToProps = dispatch => {
+    return {handleEditUser: (updatedUser) => dispatch(updateUser(updatedUser))}
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditUserForm);
