@@ -1,3 +1,6 @@
+@import '../styling-vars.scss';
+
+
 .homepage-container {
 
     &__header {
@@ -8,8 +11,13 @@
 
     &__link {
         text-align: center;
-        margin: 15px 0;
+        width: 100px;
+        margin: 15px auto;
         display: block;
+        color: black;
+        &:hover {
+            color: $scheme-blue-dark;
+        }
     }
 
     &__day-cards-list {

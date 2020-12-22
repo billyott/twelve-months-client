@@ -4,8 +4,10 @@
 .nav-bar {
     background-color: $scheme-grey-light;
     position: absolute;
-    height: 90vh;
+    height: 100vh;
     z-index:1;
+    box-shadow: 2px 2px 5px grey;
+
 
     &__hamburger {
         position: absolute;
@@ -29,6 +31,12 @@
         display: block;
         color: black;
         margin: 20px 35px 0 15px;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+            color: $scheme-coral;
+        }
     }
 
     &__sub-header {

@@ -16,6 +16,10 @@
         margin-left: 1%;
         color: black;
         text-decoration: none;
+        &:hover {
+            color: $scheme-coral;
+            text-shadow: 1px 1px 4px #000000;
+        }
     }
 
     &__button {
@@ -31,6 +35,11 @@
         font-size: 1rem;
         margin-top: auto;
         margin-bottom: auto;
+        &:hover {
+            color: $scheme-coral;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
 
 }

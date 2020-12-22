@@ -6,6 +6,11 @@
     text-align: center;
     position: relative;
     height: 150px;
+    box-shadow: 5px 5px 5px grey;
+
+    &:hover {
+        background-color: $scheme-blue-dark;
+    }
 
     &__header {
         margin-bottom: 20px;

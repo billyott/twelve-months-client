@@ -4,13 +4,14 @@
 
 .day-details-card {
     display: flex;
-    padding: 0 60px;
+    // padding: 0 60px;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     height: 450px;
     max-height: 450px;
     position: relative;
+    box-shadow: 5px 5px 5px grey;
 
     &__header {
         &--date {
@@ -102,6 +103,10 @@
         right: 0;
         margin: 0 auto 7px;
         text-align: center;
+        color: black;
+        &:hover {
+            color: $scheme-blue-dark;
+        }
     }
 
     &__mood-sleep {
