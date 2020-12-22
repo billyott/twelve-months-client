@@ -1,4 +1,6 @@
 .trend-container {
+    text-align: center;
+    
     &__graph-container {
         height: 600px
     }
@@ -27,5 +29,9 @@
 
     &__date-picker-container {
         display: inline-block;
+    }
+
+    &__export-link {
+        text-align: center;
     }
 }

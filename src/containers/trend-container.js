@@ -2,7 +2,8 @@ import React from 'react';
 import dayjs from 'dayjs';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
-import { isNumber } from 'lodash';
+import { isNumber, lte } from 'lodash';
+import { CSVLink } from "react-csv";
 
 import LineGraph from '../components/line-graph';
 
@@ -15,7 +16,8 @@ class TrendContainer extends React.Component{
         startDate: Date.parse('2020/11/01'),
         endDate: new Date(),
         aggregation: 'day',
-        data: []
+        data: [],
+        formattedData: []
     };
 
     componentDidMount() {
@@ -37,8 +39,10 @@ class TrendContainer extends React.Component{
         .then(resp => resp.json())
         .then(days => {
             const data = this.stageData(days)
+            const formattedData = this.formatDataForExport(data)
             this.setState({
-                data: {data}
+                data: {data},
+                formattedData: formattedData
             })
         })
     }
@@ -51,8 +55,10 @@ class TrendContainer extends React.Component{
         .then(resp => resp.json())
         .then(days => {
             const data = this.stageData(days)
+            const formattedData = this.formatDataForExport(data)
             this.setState({
-                data: {data}
+                data: {data},
+                formattedData: formattedData
             })
         })
     }
@@ -146,6 +152,20 @@ class TrendContainer extends React.Component{
         return data
     }
 
+    formatDataForExport = (rawData) => {
+        const data = []
+        rawData[0].data.forEach(dataPoint => {
+            let formattedDataPoint = {}
+            formattedDataPoint["Date"] = dataPoint.x
+            formattedDataPoint["Mood Score"] = dataPoint.y
+            data.push(formattedDataPoint)
+        })
+        rawData[1].data.forEach(dataPoint => {
+            let matchedDataPoint = data.find(dp => dp["Date"] === dataPoint.x)
+            matchedDataPoint["Sleep Hours"] = dataPoint.y
+        })
+        return data
+    }
 
     render() {
         return (
@@ -175,6 +195,7 @@ class TrendContainer extends React.Component{
                 <div className="trend-container__graph-container">
                     <LineGraph {...this.state.data} />
                 </div>
+                {this.state.data.data ? <CSVLink className="trend-container__export-link" data={this.state?.formattedData} filename={`mood-sleep-export.csv`}>export data</CSVLink> : null}
             </div>
         );
     }
