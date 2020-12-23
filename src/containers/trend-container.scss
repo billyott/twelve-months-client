@@ -1,6 +1,8 @@
+@import '../styling-vars.scss';
+
 .trend-container {
     text-align: center;
-    
+
     &__graph-container {
         height: 600px
     }
@@ -33,5 +35,9 @@
 
     &__export-link {
         text-align: center;
+        color: black;
+        &:hover {
+            color: $scheme-blue-dark;
+        }
     }
 }

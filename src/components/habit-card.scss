@@ -13,7 +13,6 @@
     }
 
     &__header {
-        margin-bottom: 20px;
         font-size: 1.5rem;
         position: absolute;
         top: 50%;
@@ -29,6 +28,15 @@
         right: 0;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
+        outline: none;
+        background: none;
+        border: none;
+        text-decoration: underline;
+        color: black;
+        &:hover {
+            color: $scheme-yellow;
+            cursor: pointer;
+        }
     }
 
 }

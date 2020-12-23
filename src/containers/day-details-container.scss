@@ -1,3 +1,5 @@
+@import '../styling-vars.scss';
+
 .day-details-container {
 
     &__header {
@@ -15,6 +17,9 @@
         font-size: 1.2rem;
         color: black;
         margin: 0 40px;
+        &:hover {
+            color: $scheme-blue-dark;
+        }
     }
 
 }
