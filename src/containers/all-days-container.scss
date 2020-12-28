@@ -1,4 +1,4 @@
-
+@import '../styling-vars.scss';
 
 .all-days-container {
 
@@ -28,6 +28,18 @@
 
     &__day-card-container {
         margin: 0 20px;
+    }
+
+    &__button {
+        border: none;
+        background-color: $scheme-blue-light;
+        padding: 7px 15px;
+        border-radius: 4px;
+        &:hover, &:active {
+            background-color: $scheme-blue-dark;
+            color: white;
+            border: none;
+        }
     }
 
 }

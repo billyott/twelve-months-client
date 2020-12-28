@@ -30,17 +30,21 @@
         }
     }
 
-    &__input {
-        width: 50%;
-        padding: 3px 2px;
-        border-width: 1px;
-        border-radius: 4px;
-        border-color: rgb(197, 196, 196);
-    }
+    // &__input {
+    //     width: 50%;
+    //     padding: 3px 2px;
+    //     border-width: 1px;
+    //     border-radius: 4px;
+    //     border-color: rgb(197, 196, 196);
+    // }
 
     &__text {
-        margin-top: 30px;
-        margin-bottom: 30px;   
+        margin-top: 20px;
+        margin-bottom: 20px;   
     }
 
+}
+
+.ui.input {
+    height: 40px;
 }

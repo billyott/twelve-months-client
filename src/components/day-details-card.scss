@@ -46,6 +46,9 @@
         list-style-type: none;
         margin: 15px 0;
         padding: 0;
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     &__button {
@@ -78,15 +81,15 @@
         display: flex;
         flex-wrap: wrap;
         max-height: 140px;
-        padding-left: 10px;
+        padding-left: 30px;
         padding-right: 10px;
         margin: 0;
         overflow: auto;
-        justify-content: space-between;
+        // justify-content: space-between;
     }
 
     &__habits-list-item {
-        text-align: center;
+        // text-align: center;
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -135,6 +138,9 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 1.5rem;
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     &__ms-form {
@@ -144,6 +150,22 @@
         transform: translate(-50%, -50%);
     }
 
+    &__ms-form-button {
+        border: none;
+        background-color: $scheme-blue-light;
+        margin-top: 1px;
+        padding: 2px 5px;
+        border-radius: 4px;
+        &:hover, &:active {
+            background-color: $scheme-blue-dark;
+            color: white;
+            border: none;
+        }
+    }
+
+    &__ms-form-select {
+        background-color: $scheme-grey-light;
+    }
 
 }
 
