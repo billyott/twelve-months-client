@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Checkbox } from 'semantic-ui-react';
 import './habit-widget.scss';
 
 
@@ -69,8 +70,9 @@ class HabitWidget extends React.Component {
     render () {
         return (
             <div className="habit-widget">
-                <label className="habit-widget__label">{this.props.habit.title}</label>
-                <input className="habit-widget__checkbox" type="checkbox" value="" checked={this.state.checked} onChange={this.toggleCheckboxChange} />
+                {/* <label className="habit-widget__label">{this.props.habit.title}</label>
+                <input className="habit-widget__checkbox" type="checkbox" value="" checked={this.state.checked} onChange={this.toggleCheckboxChange} /> */}
+                <Checkbox label={this.props.habit.title} checked={this.state.checked} onChange={this.toggleCheckboxChange} />
             </div>
         );
     }

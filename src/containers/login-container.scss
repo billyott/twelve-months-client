@@ -10,6 +10,8 @@
     overflow: hidden;
 
     &__left {
+        display: flex;
+        flex-direction: column;
         width: 60%;
         background-color: $scheme-blue-light;
     }
@@ -34,14 +36,16 @@
 
     &__sub-header {
         font-size: 3.5rem;
-        margin-top: 10%;
+        margin-top: 15%;
+        margin-bottom: 10%;
         margin-left: 10%;
         margin-right: 5%;
+        line-height: 50px;
     }
 
     &__sub-sub-header {
-        font-size: 1.2rem;
-        margin-top: 10%;
+        font-size: 1.5rem;
+        line-height: 25px;
         margin-left: 10%;
         margin-right: 7%;
     }
