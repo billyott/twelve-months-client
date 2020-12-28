@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Input } from 'semantic-ui-react';
 
 import { setUser } from '../redux/actions';
 import './login-form.scss';
@@ -28,9 +29,9 @@ class LoginForm extends React.Component {
             <form className="login-form" onSubmit={this.handleLoginSubmit}>
                 <div className="login-form__header">LOG IN</div>
                 <label className="login-form__label">username</label>
-                <input className="login-form__input" name="username" placeholder="enter username" value={this.state.username} onChange={this.handleInputUpdate}></input>
+                <Input className="login-form__input" name="username" placeholder="enter username" value={this.state.username} onChange={this.handleInputUpdate}></Input>
                 <label className="login-form__label">password</label>
-                <input className="login-form__input" name="password" placeholder="enter password" value={this.state.password} onChange={this.handleInputUpdate} type="password"></input>
+                <Input className="login-form__input" name="password" placeholder="enter password" value={this.state.password} onChange={this.handleInputUpdate} type="password"></Input>
                 <button className="login-form__button" type="submit">log in</button>
             </form>
         );
