@@ -26,7 +26,16 @@
     }
 
     &__button {
-        margin-left: 20px
+        margin-left: 20px;
+        border: none;
+        background-color: $scheme-blue-light;
+        padding: 7px 15px;
+        border-radius: 4px;
+        &:hover, &:active {
+            background-color: $scheme-blue-dark;
+            color: white;
+            border: none;
+        }
     }
 
     &__date-picker-container {
@@ -36,8 +45,14 @@
     &__export-link {
         text-align: center;
         color: black;
+        text-decoration: underline;
         &:hover {
             color: $scheme-blue-dark;
+            text-decoration: underline;
         }
     }
+}
+
+input {
+    border-width: 1px;
 }

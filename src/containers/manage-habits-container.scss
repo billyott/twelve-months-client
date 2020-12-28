@@ -1,3 +1,6 @@
+@import '../styling-vars.scss';
+
+
 .manage-habits-container {
     position: relative;
     
@@ -14,11 +17,11 @@
         width: 85%;
         margin-left: auto;
         margin-right: auto;
-        padding: 0;
+        padding-left: 150px;
         list-style-type: none;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
+        // justify-content: space-around;
     }
 
     &__habit-card-li {
@@ -52,5 +55,21 @@
         margin-right: 10px;
     }
 
+    &__button-submit {
+        border: none;
+        background-color: $scheme-blue-light;
+        padding: 7px 15px;
+        border-radius: 4px;
+        &:hover, &:active {
+            background-color: $scheme-blue-dark;
+            color: white;
+            border: none;
+        }
+    }
 
+
+}
+
+.ui.input {
+    height: 30px;
 }

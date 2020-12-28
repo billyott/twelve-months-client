@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Input } from 'semantic-ui-react';
 
 import { updateUser } from '../redux/actions';
 import HabitCard from '../components/habit-card';
@@ -76,7 +77,7 @@ class ManageHabitsContainer extends React.Component{
                             <option value="archived habits">archived habits</option>
                         </select>
                         <form className="manage-habits-container__form" onSubmit={this.handleCreateHabit}>
-                            <input className="manage-habits-container__input" name="habitTitle" type="text" placeholder="enter new habit" value={this.state.habitTitle} onChange={this.handleInputUpdate}></input>
+                            <Input className="manage-habits-container__input" name="habitTitle" type="text" placeholder="enter new habit" value={this.state.habitTitle} onChange={this.handleInputUpdate}></Input>
                             <button className="manage-habits-container__button-submit">add habit</button>
                         </form>
                     </div>

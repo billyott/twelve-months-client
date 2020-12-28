@@ -29,6 +29,15 @@
         bottom: 5%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
+        border: none;
+        background-color: $scheme-blue-light;
+        padding: 7px 15px;
+        border-radius: 4px;
+        &:hover, &:active {
+            background-color: $scheme-blue-dark;
+            color: white;
+            border: none;
+        }
     }
 
     &__account-update-message {
