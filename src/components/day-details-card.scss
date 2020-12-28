@@ -107,8 +107,10 @@
         margin: 0 auto 7px;
         text-align: center;
         color: black;
+        text-decoration: underline;
         &:hover {
             color: $scheme-blue-dark;
+            text-decoration: underline;
         }
     }
 

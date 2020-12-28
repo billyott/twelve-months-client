@@ -2,8 +2,9 @@ import React from 'react';
 import dayjs from 'dayjs';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
-import { isNumber, lte } from 'lodash';
+import { isNumber } from 'lodash';
 import { CSVLink } from "react-csv";
+import { Loader } from 'semantic-ui-react';
 
 import LineGraph from '../components/line-graph';
 
@@ -193,7 +194,11 @@ class TrendContainer extends React.Component{
                     </div>
                 </div>
                 <div className="trend-container__graph-container">
-                    <LineGraph {...this.state.data} />
+                    {this.state.data.data ? 
+                        <LineGraph {...this.state.data} />
+                    :
+                        <Loader active inline='centered' />
+                    }
                 </div>
                 {this.state.data.data ? <CSVLink className="trend-container__export-link" data={this.state?.formattedData} filename={`mood-sleep-export.csv`}>export data</CSVLink> : null}
             </div>

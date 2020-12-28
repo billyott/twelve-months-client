@@ -17,8 +17,10 @@
         font-size: 1.2rem;
         color: black;
         margin: 0 40px;
+        text-decoration: underline;
         &:hover {
             color: $scheme-blue-dark;
+            text-decoration: underline;
         }
     }
 

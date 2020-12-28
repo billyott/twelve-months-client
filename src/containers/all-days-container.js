@@ -1,6 +1,7 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import { connect } from 'react-redux';
+import { Loader } from 'semantic-ui-react';
 
 import DayCard from '../components/day-card';
 import './all-days-container.scss';
@@ -98,7 +99,11 @@ class AllDaysContainer extends React.Component{
                     </div>
                 </div>
                 <div className="all-days-container__day-cards-list">
-                    {this.state.days.map(day => <div className="all-days-container__day-card-container" key={day.id}><DayCard day={day} /></div>)}
+                    {this.state.days.length > 0 ? 
+                    this.state.days.map(day => <div className="all-days-container__day-card-container" key={day.id}><DayCard day={day} /></div>)
+                    :
+                    <Loader active inline='centered' />
+                    }
                 </div>
             </div>
         );
