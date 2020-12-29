@@ -39,6 +39,7 @@ function AuthContainer() {
                 </Route>
             </Switch>
             </div>
+            <Footer />
         </div>
     )
 }
@@ -57,7 +58,6 @@ function App(props) {
                         {!!props.user.id ? <AuthContainer /> : <Redirect to="/login"/>}
                     </Route>
                 </Switch>
-                {!!props.user.id ? <Footer /> : null}
             </BrowserRouter>
         </div>
     );

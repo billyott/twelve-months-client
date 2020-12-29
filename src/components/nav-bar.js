@@ -20,7 +20,7 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className="nav-bar">
-                <div className="nav-bar__hamburger" onClick={this.handleToggleMenu}>
+                <div className="nav-bar__hamburger" onClick={this.handleToggleMenu} onScroll={this.handleToggleMenu}>
                     <div className="nav-bar__hamburger-line"></div>
                     <div className="nav-bar__hamburger-line"></div>
                     <div className="nav-bar__hamburger-line"></div>
