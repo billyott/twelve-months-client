@@ -5,7 +5,8 @@
     background-color: $scheme-blue-light;
     text-align: center;
     position: relative;
-    height: 150px;
+    height: 100px;
+    border-radius: 20px;
     box-shadow: 5px 5px 5px grey;
 
     &:hover {
