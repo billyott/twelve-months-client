@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import Header from './components/header';
+import Footer from './components/footer';
 import NavBar from './components/nav-bar';
 import LoginContainer from './containers/login-container';
 import HomepageContainer from './containers/homepage-container';
@@ -56,6 +57,7 @@ function App(props) {
                         {!!props.user.id ? <AuthContainer /> : <Redirect to="/login"/>}
                     </Route>
                 </Switch>
+                {!!props.user.id ? <Footer /> : null}
             </BrowserRouter>
         </div>
     );

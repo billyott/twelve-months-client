@@ -16,6 +16,9 @@
     &__link {
         text-decoration: none;
         color: black;
+        &:hover {
+            color: black;
+        }
     }
 
     &__ms-widget {

@@ -4,12 +4,14 @@
 .nav-bar {
     background-color: $scheme-grey-light;
     position: absolute;
-    height: 100vh;
+    height: 100%;
     z-index: 1;
     box-shadow: 2px 2px 5px grey;
 
 
     &__hamburger {
+        margin-top: 10px;
+        margin-left: 5px;
         position: absolute;
         left: 10;
         &:hover {
@@ -19,8 +21,8 @@
 
     &__hamburger-line {
         background-color: black;
-        height: 4px;
-        width: 30px;
+        height: 5px;
+        width: 35px;
         margin: 5px;
     }
 

@@ -1,0 +1,15 @@
+@import '../styling-vars.scss';
+
+
+.footer {
+    // position: fixed;
+    // left: 0;
+    // bottom: 0;
+    padding: 20px 0 10px;
+    font-size: .8rem;
+    margin-top: 20px;
+    width: 100%;
+    // background-color: $scheme-grey-light;
+    text-align: center;
+    border-top: 1px solid rgb(185, 183, 183);
+}
