@@ -52,6 +52,7 @@ class AllDaysContainer extends React.Component{
 
     filterDays = (e) => {
         e.preventDefault()
+        this.setState({days: []})
         const startDate = `${this.state.year}-${this.state.month}-01`
         const endDate = `${this.state.year}-${this.state.month}-${dayjs(startDate).daysInMonth()}`
         fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${startDate}&end_date=${endDate}`)

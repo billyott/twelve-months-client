@@ -50,6 +50,7 @@ class TrendContainer extends React.Component{
 
     filterDays = (e) => {
         e.preventDefault()
+        this.setState({data: []})
         const startDate = dayjs(this.state.startDate).format('YYYY-MM-DD')
         const endDate = dayjs(this.state.endDate).format('YYYY-MM-DD')
         fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${startDate}&end_date=${endDate}`)
