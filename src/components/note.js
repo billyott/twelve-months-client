@@ -44,7 +44,15 @@ class Note extends React.Component {
         return(
             <div className="note">
                 <div className="note__content-container">
-                    {this.state.showEditNoteForm ? <EditNoteForm note={this.state.note} dayId={this.props.dayId} handleShowEditNoteForm={this.handleShowEditNoteForm} handleUpdateNote={this.handleUpdateNote} handleDeleteNote={this.props.handleDeleteNote} /> : null}                    {this.state.showEditNoteForm ? null : <div className="note__content" onClick={this.handleShowEditNoteForm}>{this.state.note.note_type === "Event" ? "△" : "-"} {this.state.note.note}</div>}
+                    {this.state.showEditNoteForm ? <EditNoteForm note={this.state.note} dayId={this.props.dayId} handleShowEditNoteForm={this.handleShowEditNoteForm} handleUpdateNote={this.handleUpdateNote} handleDeleteNote={this.props.handleDeleteNote} /> : null}
+                    {this.state.showEditNoteForm ? null : 
+                    <div className="note__content">
+                        <div className="note__header-items">
+                            <div className="note__type">{this.state.note.note_type === "Event" ? "△ event" : "◯ thought"} </div>
+                            <button className="note__edit-button" onClick={this.handleShowEditNoteForm}><i class="pencil alternate icon"></i></button>
+                        </div>
+                        <div className="note__entry">{this.state.note.note}</div>
+                    </div>}
                 </div>
             </div>
         );

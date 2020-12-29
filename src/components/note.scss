@@ -1,5 +1,37 @@
-.note {
+@import '../styling-vars.scss';
 
+.note {
+    background-color: $scheme-grey-light;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $scheme-blue-dark;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: space-between;
+
+    &__header-items {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__edit-button {
+        margin-right: 20px;
+        display: inline-block;
+        margin-bottom: 10px;
+        background-color: $scheme-yellow;
+        border-radius: 10px;
+        padding: 2px 10px;
+        &:hover {
+            background-color: #d4b63e;
+        }
+    }
+
+    &__type {
+        display: inline-block;
+        margin-right: 20px;
+        font-size: 1.3rem;
+    }
 
     &__content {
         width: 100%;

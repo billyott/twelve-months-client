@@ -18,7 +18,7 @@ function LoginContainer() {
                     self-awareness fuels personal growth. data fuels self-awareness.
                 </div>
                 <div className="login-container__sub-sub-header">
-                    12MONTHS is a minimalist daily journaling app that allows you to track your habit, mood, and any notes associated with your day. start tracking your year today.
+                    12MONTHS is a minimalist daily journaling app that allows you to track your habits, mood, and any notes associated with your day. start tracking your year today.
                 </div>
             </div>
             <div className="login-container__right">
