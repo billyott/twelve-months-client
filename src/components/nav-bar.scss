@@ -5,13 +5,16 @@
     background-color: $scheme-grey-light;
     position: absolute;
     height: 100vh;
-    z-index:1;
+    z-index: 1;
     box-shadow: 2px 2px 5px grey;
 
 
     &__hamburger {
         position: absolute;
         left: 10;
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     &__hamburger-line {
