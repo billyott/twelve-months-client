@@ -1,9 +1,15 @@
+@import '../styling-vars.scss';
+
+
 .new-note-form {
-    
+    background-color: $scheme-grey-light;
+    padding: 10px;
+    border-radius: 10px;
+
 
     &__label-container {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         margin-bottom: 5px;
     }
 
@@ -16,5 +22,17 @@
         height: 200px;
         resize: none;
         max-width: 100%;
+    }
+
+    &__button {
+        border: none;
+        background-color: $scheme-blue-light;
+        padding: 3px 5px;
+        border-radius: 4px;
+        &:hover, &:active {
+            background-color: $scheme-blue-dark;
+            color: white;
+            border: none;
+        }
     }
 }

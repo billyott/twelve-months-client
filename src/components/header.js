@@ -15,7 +15,7 @@ function Header(props) {
 
     return (
         <header className="header">
-            <Link className="header__header" to={`/`}>12MONTHS <i class="book icon"></i></Link>
+            <Link className="header__header" to={`/`}>12MONTHS <i class="calendar alternate outline icon"></i></Link>
             {/* <div className="header__header">
                 12MONTHS
             </div> */}

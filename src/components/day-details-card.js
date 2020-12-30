@@ -122,7 +122,7 @@ class DayDetailsCard extends React.Component {
                         {this.state.showAddNoteForm ? <NewNoteForm dayId={this.props.day.id} handleCreateNoteSubmit={this.handleCreateNoteSubmit}/> : null}
                         {this.state?.notes?.map(note => <li className="day-details-card__notes-list-item"key={note.id}><Note note={note} dayId={this.props.day.id} handleDeleteNote={this.handleDeleteNote}/></li>)}
                     </ul>
-                    <button className="day-details-card__button" onClick={this.handleShowNewNoteForm}>+</button>
+                    <button className="day-details-card__button" onClick={this.handleShowNewNoteForm}>{this.state.showAddNoteForm ? "x" : "+"}</button>
                 </div>
                 <div className="day-details-card__right-container">
                     <div className="day-details-card__habits">
