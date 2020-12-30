@@ -12,7 +12,10 @@ function LoginContainer() {
         <div className="login-container">
             <div className="login-container__left">
                 <div className="login-container__header">
-                    12MONTHS <i class="calendar alternate outline icon"></i>
+                    <div className="login-container__logo">
+                        <img src="./twelve-months-logo.png" alt="twelve months logo" />
+                    </div>
+                    12MONTHS
                 </div>
                 <div className="login-container__sub-header">
                     self-awareness fuels personal growth. data fuels self-awareness.

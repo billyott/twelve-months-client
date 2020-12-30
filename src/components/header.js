@@ -9,18 +9,19 @@ import './header.scss';
 function Header(props) {
 
 
-    const handleLogout = () => {
+    const handleLogout = () => {<i className="calendar alternate outline icon"></i>
         props.handleLogout()
     }
 
     return (
         <header className="header">
-            <Link className="header__header" to={`/`}>12MONTHS <i class="calendar alternate outline icon"></i></Link>
-            {/* <div className="header__header">
-                12MONTHS
-            </div> */}
+            <Link className="header__header" to={`/`}>
+                <div className="header__logo">
+                    <img src="./twelve-months-logo.png" alt="twelve months logo" />
+                </div>
+                12MONTHS 
+            </Link>
             <button className="header__button" onClick={handleLogout}>LOG OUT</button>
-            {/* <div className="header__sub-header">Hello, {props.username}!</div> */}
         </header>
     );
 

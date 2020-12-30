@@ -72,29 +72,33 @@ class AllDaysContainer extends React.Component{
                 <div className="all-days-container__header-items">
                     <div className="all-days-container__header">{`${dayjs(this.state.headerMonth).format("MMMM")} ${this.state.headerYear}`.toUpperCase()}</div>
                     <div className="all-days-container__filters">
-                        <form className="all-days-container___form" onSubmit={this.filterDays}>
+                        <form className="all-days-container___form ui form" onSubmit={this.filterDays}>
                             <label className="all-days-container__label">select month</label>
-                            <select className="all-days-container__filter" name="month" value={this.state.month} onChange={this.handleInputUpdate}>
-                                <option disabled value="">-select month-</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
+                            <div className="all-days-container__filter-container">
+                                <select className="all-days-container__filter" name="month" value={this.state.month} onChange={this.handleInputUpdate}>
+                                    <option disabled value="">-select month-</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
                             <label className="all-days-container__label">select year</label>
-                            <select className="all-days-container__filter" name="year" value={this.state.year} onChange={this.handleInputUpdate}>
-                                <option disabled value="">-select year-</option>
-                                <option value="2020">2020</option>
-                                <option value="2021">2021</option>
-                            </select>
+                            <div className="all-days-container__filter-container">
+                                <select className="all-days-container__filter" name="year" value={this.state.year} onChange={this.handleInputUpdate}>
+                                    <option disabled value="">-select year-</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                </select>
+                            </div>
                             <button className="all-days-container__button" type="submit">apply filter</button>
                         </form>
                     </div>

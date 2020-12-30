@@ -49,7 +49,7 @@ class Note extends React.Component {
                     <div className="note__content">
                         <div className="note__header-items">
                             <div className="note__type">{this.state.note.note_type === "Event" ? "△ event" : "◯ thought"} </div>
-                            <button className="note__edit-button" onClick={this.handleShowEditNoteForm}><i class="pencil alternate icon"></i></button>
+                            <button className="note__edit-button" onClick={this.handleShowEditNoteForm}><i className="pencil alternate icon"></i></button>
                         </div>
                         <div className="note__entry">{this.state.note.note}</div>
                     </div>}

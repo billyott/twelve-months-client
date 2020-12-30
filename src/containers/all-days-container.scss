@@ -15,8 +15,12 @@
         margin-right: 5px;
     }
 
-    &__filter {
+    &__filter-container {
+        display:inline-block;
         margin-right: 50px;
+    }
+
+    &__filter {
     }
 
     &__day-cards-list {
@@ -33,7 +37,7 @@
     &__button {
         border: none;
         background-color: $scheme-blue-light;
-        padding: 7px 15px;
+        padding: 11px 15px;
         border-radius: 4px;
         &:hover, &:active {
             background-color: $scheme-blue-dark;

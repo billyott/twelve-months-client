@@ -70,12 +70,16 @@ class ManageHabitsContainer extends React.Component{
                 <div className="manage-habits-container__header-items">
                     <div className="manage-habits-container__header">MANAGE HABITS</div>
                     <div className="manage-habits-container__filters">
-                        <label className="manage-habits-container__label">select habits</label>
-                        <select className="manage-habits-container__filter" name="selectedHabits" value={this.state.selectedHabits} onChange={this.handleInputUpdate}>
-                            <option value="current habits">current habits</option>
-                            <option value="all habits">all habits</option>
-                            <option value="archived habits">archived habits</option>
-                        </select>
+                        <form className="manage-habits-container__form ui form">
+                            <label className="manage-habits-container__label">select habits</label>
+                            <div className="manage-habits-container__filter-container">
+                                <select className="manage-habits-container__filter" name="selectedHabits" value={this.state.selectedHabits} onChange={this.handleInputUpdate}>
+                                    <option value="current habits">current habits</option>
+                                    <option value="all habits">all habits</option>
+                                    <option value="archived habits">archived habits</option>
+                                </select>
+                            </div>
+                        </form>
                         <form className="manage-habits-container__form" onSubmit={this.handleCreateHabit}>
                             <Input className="manage-habits-container__input" name="habitTitle" type="text" placeholder="enter new habit" value={this.state.habitTitle} onChange={this.handleInputUpdate}></Input>
                             <button className="manage-habits-container__button-submit">add habit</button>

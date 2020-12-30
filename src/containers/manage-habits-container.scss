@@ -2,7 +2,6 @@
 
 
 .manage-habits-container {
-    // position: relative;
     
     &__header-items {
         text-align: center;
@@ -21,7 +20,6 @@
         list-style-type: none;
         display: flex;
         flex-wrap: wrap;
-        // justify-content: space-around;
     }
 
     &__habit-card-li {
@@ -65,6 +63,11 @@
             color: white;
             border: none;
         }
+    }
+
+    &__filter-container {
+        display:inline-block;
+        margin-right: 50px;
     }
 
 
