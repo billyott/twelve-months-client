@@ -29,7 +29,7 @@
         margin-left: 20px;
         border: none;
         background-color: $scheme-blue-light;
-        padding: 7px 15px;
+        padding: 11px 15px;
         border-radius: 4px;
         &:hover, &:active {
             background-color: $scheme-blue-dark;
@@ -50,6 +50,14 @@
             color: $scheme-blue-dark;
             text-decoration: underline;
         }
+    }
+
+    &__form {
+        display: inline-block;
+    }
+
+    &__filter-container {
+        display: inline-block;
     }
 }
 

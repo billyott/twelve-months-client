@@ -139,19 +139,21 @@ class DayDetailsCard extends React.Component {
                             <div className="day-details-card__ms-value-container">
                                 <div className="day-details-card__ms-value">{this.state.showEditMoodForm ? null : this.state.mood_score ? this.state.mood_score : "unlogged"}</div>
                                 {this.state.showEditMoodForm ? 
-                                <form className="day-details-card__ms-form" onSubmit={this.handleUpdateDay}>
-                                    <select className="day-details-card__ms-form-select" name="mood_score" value={this.state.mood_score || ""} onChange={this.handleInputUpdate}>
-                                        <option value="1">1</option> 
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
+                                <form className="day-details-card__ms-form ui form" onSubmit={this.handleUpdateDay}>
+                                    <div className="day-details-card__ms-form-select-container">
+                                        <select className="day-details-card__ms-form-select" name="mood_score" value={this.state.mood_score || ""} onChange={this.handleInputUpdate}>
+                                            <option value="1">1</option> 
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
                                     <button className="day-details-card__ms-form-button" type="submit">log</button>
                                 </form>
                                 : null}
@@ -162,19 +164,21 @@ class DayDetailsCard extends React.Component {
                             <div className="day-details-card__ms-value-container">
                                 <div className="day-details-card__ms-value">{this.state.showEditSleepForm ? null : this.state.sleep_hours ? this.state.sleep_hours : "unlogged"}</div>
                                 {this.state.showEditSleepForm ? 
-                                <form className="day-details-card__ms-form" onSubmit={this.handleUpdateDay}>
-                                    <select className="day-details-card__ms-form-select" name="sleep_hours" value={this.state.sleep_hours || ""} onChange={this.handleInputUpdate}>
-                                        <option value="1">1</option> 
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
+                                <form className="day-details-card__ms-form ui form" onSubmit={this.handleUpdateDay}>
+                                    <div className="day-details-card__ms-form-select-container">
+                                        <select className="day-details-card__ms-form-select" name="sleep_hours" value={this.state.sleep_hours || ""} onChange={this.handleInputUpdate}>
+                                            <option value="1">1</option> 
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
                                     <button className="day-details-card__ms-form-button" type="submit">log</button>
                                 </form>
                                 : null}

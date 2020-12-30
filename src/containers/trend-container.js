@@ -183,14 +183,18 @@ class TrendContainer extends React.Component{
                             <label className="trend-container__label">end date</label>
                             <DatePicker selected={this.state.endDate} onChange={date => this.setState({endDate: date})}/>
                         </div>
-                        <label className="trend-container__label">date grouping</label>
-                            <select className="trend-container__filter" name="aggreation" value={this.state.aggregation} onChange={e => this.setState({aggregation: e.target.value})}>
-                                <option disabled value="">-select agg-</option>
-                                <option value="day">day</option>
-                                <option value="week">week</option>
-                                <option value="month">month</option>
-                                <option value="year">year</option>
-                            </select>
+                        <form className="trend-container__form ui form">
+                            <label className="trend-container__label">date grouping</label>
+                            <div className ="trend-container__filter-container">
+                                <select className="trend-container__filter" name="aggreation" value={this.state.aggregation} onChange={e => this.setState({aggregation: e.target.value})}>
+                                    <option disabled value="">-select date grouping-</option>
+                                    <option value="day">day</option>
+                                    <option value="week">week</option>
+                                    <option value="month">month</option>
+                                    <option value="year">year</option>
+                                </select>
+                            </div>
+                        </form>
                         <button className="trend-container__button" onClick={this.filterDays}>update date range</button>
                     </div>
                 </div>

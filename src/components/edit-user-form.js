@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateUser } from '../redux/actions';
+import { Input } from 'semantic-ui-react';
 
+import { updateUser } from '../redux/actions';
 import './edit-user-form.scss';
 
 
@@ -54,23 +55,23 @@ class EditUserForm extends React.Component {
                 {/* <div className="edit-user-form__header">account details</div> */}
                 <div className="edit-user-form__input-container">
                     <label className="edit-user-form__label">email address</label>
-                    <input className="edit-user-form__input" name="email" placeholder="enter email" value={this.state.email} onChange={this.handleInputUpdate}></input>
+                    <Input className="edit-user-form__input" name="email" placeholder="enter email" value={this.state.email} onChange={this.handleInputUpdate}></Input>
                 </div>
                 <div className="edit-user-form__input-container">
                     <label className="edit-user-form__label">username</label>
-                    <input className="edit-user-form__input" name="username" placeholder="enter username" value={this.state.username} onChange={this.handleInputUpdate}></input>
+                    <Input className="edit-user-form__input" name="username" placeholder="enter username" value={this.state.username} onChange={this.handleInputUpdate}></Input>
                 </div>
                 {/* <div className="edit-user-form__input-container">
                     <label className="edit-user-form__label">current password</label>
-                    <input className="edit-user-form__input" name="password" placeholder="enter current password" value={this.state.currentPassword} onChange={this.handleInputUpdate} type="password"></input>
+                    <Input className="edit-user-form__input" name="password" placeholder="enter current password" value={this.state.currentPassword} onChange={this.handleInputUpdate} type="password"></Input>
                 </div> */}
                 <div className="edit-user-form__input-container">
                     <label className="edit-user-form__label">new password</label>
-                    <input className="edit-user-form__input" name="newPassword" placeholder="enter new password" value={this.state.newPassword} onChange={this.handleInputUpdate} type="password"></input>
+                    <Input className="edit-user-form__input" name="newPassword" placeholder="enter new password" value={this.state.newPassword} onChange={this.handleInputUpdate} type="password"></Input>
                 </div>
                 {/* <div className="edit-user-form__input-container">
                     <label className="edit-user-form__label">confirm new password</label>
-                    <input className="edit-user-form__input" name="confirmNewPassword" placeholder="confirm new password" value={this.state.confirmNewPassword} onChange={this.handleInputUpdate} type="password"></input>
+                    <Input className="edit-user-form__input" name="confirmNewPassword" placeholder="confirm new password" value={this.state.confirmNewPassword} onChange={this.handleInputUpdate} type="password"></input>
                 </div> */}
                 <button className="edit-user-form__button">update account details</button>
             </form>
