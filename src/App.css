@@ -4,8 +4,12 @@ html, body {
   font-family: 'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.main-container {
+body {
+  min-height: 100vh;
   position: relative;
+}
+
+.main-container {
   height: 100%;
 }
 
