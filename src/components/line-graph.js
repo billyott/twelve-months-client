@@ -9,7 +9,7 @@ const LineGraph = ({ data = []}) => (
         margin={{ top: 50, right: 100, bottom: 150, left: 100 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 0, max: 11, stacked: false, reverse: false }}
-        yFormat=" >-.2f"
+        yFormat=" >-.0f"
         axisTop={null}
         axisRight={null}
         axisBottom={{
@@ -36,6 +36,7 @@ const LineGraph = ({ data = []}) => (
         pointBorderColor={{ from: 'serieColor' }}
         pointLabelYOffset={-12}
         useMesh={true}
+        enableSlices='x'
         legends={[
             {
                 anchor: 'bottom',
