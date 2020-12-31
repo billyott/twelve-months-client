@@ -13,8 +13,6 @@ import TrendContainer from './containers/trend-container';
 import AccountContainer from './containers/account-container';
 import './App.css';
 
-//test comment for push
-
 function AuthContainer() {
     return(
         <div className="main-container">
