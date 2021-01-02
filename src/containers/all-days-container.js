@@ -52,16 +52,18 @@ class AllDaysContainer extends React.Component{
 
     filterDays = (e) => {
         e.preventDefault()
-        this.setState({days: []})
+        this.setState({
+            days: [],
+            headerMonth: this.state.month,
+            headerYear: this.state.year
+        })
         const startDate = `${this.state.year}-${this.state.month}-01`
         const endDate = `${this.state.year}-${this.state.month}-${dayjs(startDate).daysInMonth()}`
         fetch(`http://localhost:3000/days?user_id=${this.props.userId}&start_date=${startDate}&end_date=${endDate}`)
         .then(resp => resp.json())
         .then(days => {
             this.setState({
-                days: days,
-                headerMonth: this.state.month,
-                headerYear: this.state.year
+                days: days
             })
         })
     }
@@ -70,7 +72,7 @@ class AllDaysContainer extends React.Component{
         return (
             <div className="all-days-container">
                 <div className="all-days-container__header-items">
-                    <div className="all-days-container__header">{`${dayjs(this.state.headerMonth).format("MMMM")} ${this.state.headerYear}`.toUpperCase()}</div>
+                    <div className="all-days-container__header">{`${dayjs(`${this.state.headerMonth}-${this.state.headerMonth}-01`).format("MMMM")} ${this.state.headerYear}`.toUpperCase()}</div>
                     <div className="all-days-container__filters">
                         <form className="all-days-container___form ui form" onSubmit={this.filterDays}>
                             <label className="all-days-container__label">select month</label>
