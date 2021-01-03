@@ -67,7 +67,7 @@ class TrendContainer extends React.Component{
 
     stageData = (rawData) => {
         const data = [
-            {id: "Mood Score", "color": "#f88888", data: []},
+            {id: "Mood Rating", "color": "#f88888", data: []},
             {id: "Sleep Hours", "color": "#5ca2d4", data: []}
         ]
         if (this.state.aggregation === 'week') {
