@@ -1,6 +1,7 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
+import { setUser } from './redux/actions';
 import Header from './components/header';
 import Footer from './components/footer';
 import NavBar from './components/nav-bar';
@@ -44,10 +45,21 @@ function AuthContainer() {
     )
 }
 
+const handleSetUser = (props) => {
+    const user = JSON.parse(window.localStorage.getItem("user"))
+    if (user.id) {
+        props.handleSetUser({
+            username: user.username,
+            password: user.password
+        })
+    }
+}
+
 function App(props) {
 
     return (
         <div className="app">
+            {JSON.parse(window.localStorage.getItem("user")) ? handleSetUser(props): null}
             <BrowserRouter>
                 {!!props.user.id ? <Header /> : null}
                 <Switch>
@@ -67,5 +79,8 @@ const mapStateToProps = state => {
     return {user: state.user}
 }
 
+const mapDispatchToProps = dispatch => {
+    return {handleSetUser: (userCreds) => dispatch(setUser(userCreds))}
+};
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
