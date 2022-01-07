@@ -8,7 +8,6 @@ export const setUser = (userCreds) => {
             const foundUser = users.find(user => user.username === userCreds.username)
             if (foundUser && foundUser.password === userCreds.password) {
                 dispatch({type: USER_LOGIN, payload: foundUser});
-                window.localStorage.setItem("user", JSON.stringify(foundUser))
             } else {
                 window.alert("incorrect username or password. please try again.")
             }
@@ -67,9 +66,4 @@ export const deleteUser = (userId) => {
 }
 
 
-export const logUserOut = () => {
-    return function (dispatch) {
-        dispatch({type: LOGOUT, payload: {}})
-        window.localStorage.setItem("user", JSON.stringify({}))
-    }
-}
+export const logUserOut = () => ({type: LOGOUT, payload: {}})
